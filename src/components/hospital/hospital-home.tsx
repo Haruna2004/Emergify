@@ -2,10 +2,12 @@
 import { ArrowRightCircleIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import useHospitalStore from "@/store/useHospital";
 
 type Props = {};
 
 export default function HospitalHome({}: Props) {
+  const update = useHospitalStore((state) => state.update);
   const router = useRouter();
   const handleSubmit = () => {
     router.push("/hospital/list-all");
