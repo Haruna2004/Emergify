@@ -127,7 +127,7 @@ let pT: Hospital = {
 const nearByHospitals: Hospital[] = [traumaCenter, generalHospital];
 
 // returns an array of id of hospitals i.e [{score: "2.3", id: "1abc"},{score: "1", id: "2abc3"}]
-function rankHospitals(hospitals: Hospital[]) {
-  
-  return [];
-}
+// function rankHospitals(hospitals: Hospital[]) {
+
+//   return [];
+// }

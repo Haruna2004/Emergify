@@ -2,7 +2,7 @@
 import { ArrowRightCircleIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
-import useHospitalStore from "@/store/useHospital";
+import useHospitalStore from "@/lib/store/useHospital";
 
 type Props = {};
 
