@@ -3,13 +3,16 @@ import Map from "@/components/driver/base-map";
 import Image from "next/image";
 import React from "react";
 import { driver_image } from "../../../public/assets";
+import MapboxExample from "@/components/driver/search-map";
 
 type Props = {};
 
 export default function LocateDriver({}: Props) {
   return (
     <div className="relative">
-      <Map />
+      {/* <Map /> */}
+      {/* <SearchMap /> */}
+      <MapboxExample />
       <div className="absolute bottom-20 left-0 right-0 mx-auto flex w-[80%] max-w-2xl flex-col items-center justify-center gap-5 rounded-md bg-white/80 p-5 sm:w-[50%] sm:p-3">
         {/* details */}
         <div className="flex flex-row gap-2">
