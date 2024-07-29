@@ -16,8 +16,8 @@ function Page({}: Props) {
     <main className="mx-auto max-w-4xl p-10">
       {step === 1 && <HospitalDetailsForm />}
       {step === 2 && <HospitalContactForm />}
-      {step === 3 && <HospitalAddrForm />}
-      {step === 4 && <HospitalFTSForm />}
+      {/* {step === 4 && <HospitalAddrForm />} */}
+      {step === 3 && <HospitalFTSForm />}
 
       <NextButton step={step} setStep={setStep} />
     </main>
