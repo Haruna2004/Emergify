@@ -8,8 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Sidebar from "@/components/global/Sidebar";
 
 export const metadata: Metadata = {
-  title: "LifeSaverAI",
-  // FirstLine, Emergify, LifeSaver
+  title: "Emergify",
   description: "AI emergency responder",
 };
 

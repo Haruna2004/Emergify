@@ -11,8 +11,7 @@ export type RegHospitalState = {
   coverImage: string;
 
   specialities: string[];
-  facilities: string[];
-  treatments: string[];
+  treatments: { title: string; value: string }[];
 
   contact: {
     phone1: string;

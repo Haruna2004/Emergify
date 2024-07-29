@@ -5,8 +5,8 @@ import { useDebounce } from "@/lib/client/hooks/debounce";
 import SearchResult from "./search-result";
 import SearchInput from "./search-input";
 import { getFilteredList } from "@/lib/utils";
-import { CloseOutlined } from "@ant-design/icons";
 import InputAccordion from "./input-accordion";
+import SelectedTreats from "./selected-treats";
 
 type Props = {};
 
@@ -29,7 +29,7 @@ export default function HospitalFTSForm({}: Props) {
 
   return (
     <FormSection
-      className="h-[90vh] overflow-y-auto border-2"
+      className="scrollbar-thin h-[90vh] overflow-y-auto border-2"
       title="Treatments"
       desc=""
     >
@@ -42,38 +42,12 @@ export default function HospitalFTSForm({}: Props) {
       </div>
 
       {/* selected */}
-      <div className="mt-5 flex max-h-60 flex-wrap items-center justify-start gap-4 overflow-y-auto">
-        {[
-          "Angiography/ Angioplasty",
-          "Beating Heart Surgery",
-          "Heart Transplant",
-          "Angiography/ Angioplasty",
-          "Beating Heart Surgery",
-          "Heart Transplant",
-          "Angiography/ Angioplasty",
-          "Beating Heart Surgery",
-          "Heart Transplant",
-          "Angiography/ Angioplasty",
-          "Beating Heart Surgery",
-          "Heart Transplant",
-          "Angiography/ Angioplasty",
-          "Beating Heart Surgery",
-          "Heart Transplant",
-          "Angiography/ Angioplasty",
-          "Beating Heart Surgery",
-          "Heart Transplant",
-        ].map((value) => (
-          <div
-            key={value}
-            className="flex items-center gap-3 rounded-full bg-cyan-600 p-1.5 px-3 text-sm font-medium text-white"
-          >
-            <p>{value}</p>
-            <CloseOutlined className="cursor-pointer font-semibold" />
-          </div>
-        ))}
-      </div>
-      {/* list */}
       <div>
+        <SelectedTreats />
+      </div>
+
+      {/* according */}
+      <div className="mt-5">
         <InputAccordion />
       </div>
     </FormSection>

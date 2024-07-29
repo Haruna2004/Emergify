@@ -1,9 +1,34 @@
 export type HospTreat = {
   category: string;
-  treatments: { title: string; value: string }[];
+  treatments: { title: string; value: string; selected?: boolean }[];
 };
 
 export const hospital_treatment: HospTreat[] = [
+  {
+    category: "Endocrinology",
+    treatments: [
+      { title: "ACTH Stimulation Tests", value: "acth-stimulation-tests" },
+      { title: "Anaemia", value: "anaemia" },
+      { title: "Diabetes", value: "diabetes" },
+      { title: "Gestational diabetes", value: "gestational-diabetes" },
+      {
+        title: "Infertility and reproductive endocrinology",
+        value: "infertility-and-reproductive-endocrinology",
+      },
+      { title: "Juvenile Diabetes", value: "juvenile-diabetes" },
+      { title: "PCOD", value: "pcod" },
+      { title: "Type 2 Diabetes", value: "type-2-diabetes" },
+    ],
+  },
+  {
+    category: "Emergency Medicine",
+    treatments: [
+      { title: "Cardiac Arrest", value: "cardiac-arrest" },
+      { title: "Heart Attack", value: "heart-attack" },
+      { title: "Stroke", value: "stroke" },
+      { title: "Trauma Care", value: "trauma-care" },
+    ],
+  },
   {
     category: "Cardiology",
     treatments: [
@@ -52,22 +77,6 @@ export const hospital_treatment: HospTreat[] = [
         value: "structural-heart-diseases",
       },
       { title: "TAVR/TAVI", value: "tavrtavi" },
-    ],
-  },
-  {
-    category: "Endocrinology",
-    treatments: [
-      { title: "ACTH Stimulation Tests", value: "acth-stimulation-tests" },
-      { title: "Anaemia", value: "anaemia" },
-      { title: "Diabetes", value: "diabetes" },
-      { title: "Gestational diabetes", value: "gestational-diabetes" },
-      {
-        title: "Infertility and reproductive endocrinology",
-        value: "infertility-and-reproductive-endocrinology",
-      },
-      { title: "Juvenile Diabetes", value: "juvenile-diabetes" },
-      { title: "PCOD", value: "pcod" },
-      { title: "Type 2 Diabetes", value: "type-2-diabetes" },
     ],
   },
   {
@@ -348,15 +357,6 @@ export const hospital_treatment: HospTreat[] = [
       { title: "Gallbladder Removal", value: "gallbladder-removal" },
       { title: "Hernia Repair", value: "hernia-repair" },
       { title: "Thyroid Surgery", value: "thyroid-surgery" },
-    ],
-  },
-  {
-    category: "Emergency Medicine",
-    treatments: [
-      { title: "Cardiac Arrest", value: "cardiac-arrest" },
-      { title: "Heart Attack", value: "heart-attack" },
-      { title: "Stroke", value: "stroke" },
-      { title: "Trauma Care", value: "trauma-care" },
     ],
   },
 ];

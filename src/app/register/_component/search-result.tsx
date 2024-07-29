@@ -8,7 +8,7 @@ type Props = {
 export default function SearchResult({ filteredList }: Props) {
   return (
     <>
-      <div className="z-5 mt-2 max-h-48 overflow-y-scroll rounded-lg border p-2 text-sm shadow-md">
+      <div className="z-5 scrollbar-thin mt-2 max-h-48 overflow-y-scroll rounded-lg border p-2 text-sm shadow-md">
         {filteredList.map(({ category, treatments }) => (
           // command list
           <div key={category}>

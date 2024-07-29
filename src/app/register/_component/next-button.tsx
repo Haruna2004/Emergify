@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import cn from "classnames";
+import regHospitalForm from "@/lib/store/regHospitalForm";
 
 type Props = {
   step: number;
@@ -7,6 +8,7 @@ type Props = {
 };
 
 export default function NextButton({ step, setStep }: Props) {
+  const state = regHospitalForm((state) => state);
   return (
     <div className="mb-5 mt-10 flex w-full items-center justify-between">
       <button
@@ -25,6 +27,7 @@ export default function NextButton({ step, setStep }: Props) {
         className="w-28 rounded-md bg-cyan-700 py-1.5 text-white opacity-80 hover:opacity-100"
         onClick={() => {
           if (step === 3) return;
+          console.log("State", state);
           setStep((prev) => prev + 1);
         }}
       >
