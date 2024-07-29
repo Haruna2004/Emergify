@@ -1,6 +1,10 @@
 export type HospTreat = {
   category: string;
-  treatments: { title: string; value: string; selected?: boolean }[];
+  treatments: {
+    title: string;
+    value: string;
+    selected?: boolean;
+  }[];
 };
 
 export const hospital_treatment: HospTreat[] = [
