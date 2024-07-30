@@ -12,6 +12,8 @@
     "@ant-design/icons": "^5.4.0",
     "@google/generative-ai": "^0.14.1",
     "@mapbox/mapbox-gl-geocoder": "^5.0.2",
+    "@picovoice/porcupine-react": "^3.0.3",
+    "@picovoice/web-voice-processor": "^4.0.9",
     "@radix-ui/react-toast": "^1.2.1",
     "@tailwindcss/typography": "^0.5.13",
     "@types/mapbox-gl": "^3.1.0",
