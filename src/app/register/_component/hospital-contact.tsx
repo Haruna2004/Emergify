@@ -1,6 +1,5 @@
 import React from "react";
 import FormSection from "./form-sec-container";
-import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import regHospitalForm from "@/lib/store/regHospitalForm";
@@ -14,7 +13,7 @@ const contact_fields = [
 ];
 
 export default function HospitalContactForm({}: Props) {
-  const { changeValue, hospitalName, contact } = regHospitalForm();
+  const { changeValue, contact } = regHospitalForm();
 
   const handleChange = (e: any) => {
     const newContact = { ...contact, [e.target.name]: e.target.value };

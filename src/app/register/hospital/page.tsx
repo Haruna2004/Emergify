@@ -4,7 +4,8 @@ import HospitalDetailsForm from "../_component/hospital-details";
 import HospitalContactForm from "../_component/hospital-contact";
 import HospitalAddrForm from "../_component/hospital-address";
 import NextButton from "../_component/next-button";
-import HospitalFTSForm from "../_component/hospital-fts";
+import HospitalTreatForm from "../_component/hospital-treat";
+import HospitalSpecForm from "../_component/hospital-spec";
 
 type Props = {};
 
@@ -15,8 +16,9 @@ function Page({}: Props) {
     <main className="mx-auto max-w-4xl p-10">
       {step === 1 && <HospitalDetailsForm />}
       {step === 2 && <HospitalContactForm />}
-      {/* {step === 4 && <HospitalAddrForm />} */}
-      {step === 3 && <HospitalFTSForm />}
+      {step === 3 && <HospitalAddrForm />}
+      {step === 4 && <HospitalSpecForm />}
+      {step === 5 && <HospitalTreatForm />}
 
       <NextButton step={step} setStep={setStep} />
     </main>

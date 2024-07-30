@@ -6,6 +6,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// TODO: move function to client libs
 export function getFilteredList(List: HospTreat[], inpValue: string) {
   const filteredComs = List.map(({ category, treatments }) => {
     const filteredValues = treatments.filter(({ title }) =>

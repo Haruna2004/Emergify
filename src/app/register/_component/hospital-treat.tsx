@@ -3,12 +3,12 @@ import FormSection from "./form-sec-container";
 import { useDebounce } from "@/lib/client/hooks/debounce";
 import SearchResult from "./search-result";
 import SearchInput from "./search-input";
-import InputAccordion from "./input-accordion";
+import InputTreatsAccordion from "./input-treats-accordion";
 import SelectedTreats from "./selected-treats";
 
 type Props = {};
 
-export default function HospitalFTSForm({}: Props) {
+export default function HospitalTreatForm({}: Props) {
   const [open, setOpen] = React.useState(false);
   const [inputValue, setInputValue] = React.useState("");
   const debouncedInputValue = useDebounce(inputValue, 300);
@@ -34,9 +34,9 @@ export default function HospitalFTSForm({}: Props) {
         <SelectedTreats />
       </div>
 
-      {/* according */}
+      {/* accordion treats input */}
       <div className="mt-5">
-        <InputAccordion />
+        <InputTreatsAccordion />
       </div>
     </FormSection>
   );

@@ -8,10 +8,7 @@ export type Message = {
 export type RegHospitalState = {
   hospitalName: string;
   description: string;
-  coverImage: string;
-
-  specialities: string[];
-  treatments: { title: string; value: string }[];
+  coverImage: string | null;
 
   contact: {
     phone1: string;
@@ -26,5 +23,5 @@ export type RegHospitalState = {
     country: string;
   };
   // methods
-  changeValue: (name: string, value: string | string[] | {}) => void;
+  changeValue: (name: string, value: string | string[] | {} | null) => void;
 };

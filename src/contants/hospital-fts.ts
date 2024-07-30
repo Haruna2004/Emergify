@@ -365,6 +365,12 @@ export const hospital_treatment: HospTreat[] = [
   },
 ];
 
+export type HospSpec = {
+  value: string;
+  title: string;
+  selected?: boolean;
+};
+
 export const hospital_specs = [
   {
     title: "Anaesthesiology",

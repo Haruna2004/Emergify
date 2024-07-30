@@ -10,7 +10,7 @@ import { useTreatmentList } from "@/lib/store/regHospitalForm";
 
 type Props = {};
 
-function InputAccordion({}: Props) {
+function InputTreatsAccordion({}: Props) {
   const { availableTreatment, selectTreat } = useTreatmentList();
 
   return (
@@ -27,7 +27,7 @@ function InputAccordion({}: Props) {
                 className="cursor-pointer"
                 onClick={() => selectTreat(categoryIndex, treatIndex)}
               >
-                <div className="itemc-center flex justify-between">
+                <div className="flex items-center justify-between">
                   <p className="text-cyan-900">{title}</p>
                   {selected && <CheckOutlined className="text-green-800" />}
                 </div>
@@ -42,4 +42,4 @@ function InputAccordion({}: Props) {
   );
 }
 
-export default InputAccordion;
+export default InputTreatsAccordion;
