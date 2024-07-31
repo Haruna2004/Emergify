@@ -8,13 +8,15 @@ export async function POST(request: Request) {
       return Response.json({
         status: 400,
         message:
-          "Request Unsuccessful: 'situation' is undefined in request body.  ",
+          "Request Unsuccessful: 'situation' is Undefined or Empty in request body.  ",
       });
     }
 
+    // call function to process the request
+
     return Response.json({
       status: 200,
-      message: "Medical Personal Gotten successfully",
+      message: "Request Successful",
       data: doctor_testData,
     });
   } catch (error) {

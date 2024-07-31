@@ -8,7 +8,7 @@ const selections = [
   { title: "Get First Aid", link: "first-aid" },
   { title: "Locate Best Hospital", link: "hospital" },
   { title: "Request Emergency Driver", link: "driver" },
-  { title: "Learn Handling Emergency", link: "learn" },
+  { title: "Donations", link: "donation" },
 ];
 
 export default function Home({}: Props) {
@@ -25,7 +25,7 @@ export default function Home({}: Props) {
               {link === "first-aid" && <PlusCircle className="text-2xl" />}
               {link === "hospital" && <HospitalIcon />}
               {link === "driver" && <CarFront />}
-              {link === "learn" && <Book />}
+              {link === "donation" && <Book />}
             </div>
 
             <p className="text-base font-medium">{title}</p>
