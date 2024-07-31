@@ -118,3 +118,21 @@ const nBH: Hospital[] = [tC, gH];
 
 const rankedHospitals = rankHospitals(nBH, patientHospital);
 console.log(rankedHospitals);
+
+const hospital3 = {
+  hospital_name: "General Hospital",
+  treatments: [
+    "Chemotherapy",
+    "Radiation Therapy",
+    "Surgery",
+    "Pain Management",
+  ],
+  specialties: ["Oncology", "Cardiology", "Neurology"],
+  facilities: [
+    "Emergency Room",
+    "Intensive Care Unit (ICU)",
+    "Operating Room",
+    "Cancer Center",
+    "Radiology Department",
+  ],
+};
