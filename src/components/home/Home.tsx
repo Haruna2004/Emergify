@@ -1,5 +1,4 @@
 import {
-  Book,
   CarFront,
   HospitalIcon,
   PlusCircle,

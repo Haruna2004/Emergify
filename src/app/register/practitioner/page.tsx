@@ -1,5 +1,5 @@
 "use client";
-import FormSection from "../_component/form-sec-container";
+import FormSection from "../_component/reg-hospital/form-sec-container";
 
 type Props = {};
 

@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import HospitalDetailsForm from "../_component/hospital-details";
-import HospitalContactForm from "../_component/hospital-contact";
-import HospitalAddrForm from "../_component/hospital-address";
-import NextButton from "../_component/next-button";
-import HospitalTreatForm from "../_component/hospital-treat";
-import HospitalSpecForm from "../_component/hospital-spec";
+import HospitalDetailsForm from "../_component/reg-hospital/hospital-details";
+import HospitalContactForm from "../_component/reg-hospital/hospital-contact";
+import HospitalAddrForm from "../_component/reg-hospital/hospital-address";
+import NextButton from "../_component/reg-hospital/next-button";
+import HospitalTreatForm from "../_component/reg-hospital/hospital-treat";
+import HospitalSpecForm from "../_component/reg-hospital/hospital-spec";
 
 type Props = {};
 

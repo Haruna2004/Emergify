@@ -28,6 +28,25 @@ const regHospitalForm = create<RegHospitalState>((set) => ({
       [name]: value,
     }));
   },
+  resetAllValue: () => {
+    set(() => ({
+      hospitalName: "",
+      description: "",
+      coverImage: "",
+      contact: {
+        phone1: "",
+        phone2: "",
+        emailAddress: "",
+      },
+      googleMapLink: "",
+      address: {
+        street: "",
+        city: "",
+        state: "",
+        country: "",
+      },
+    }));
+  },
 }));
 
 export default regHospitalForm;
@@ -36,6 +55,7 @@ type TreatList = {
   availableTreatment: HospTreat[];
   selectTreat: (categoryIndex: number, treatIndex: number) => void;
   getSelectedTreat: () => string[];
+  resetTreat: () => void;
 };
 
 export const useTreatmentList = create<TreatList>((set, get) => ({
@@ -66,12 +86,19 @@ export const useTreatmentList = create<TreatList>((set, get) => ({
 
     return finalTreatList;
   },
+
+  resetTreat: () => {
+    set(() => ({
+      availableTreatment: hospital_treatment,
+    }));
+  },
 }));
 
 type SpecsList = {
   availableSpecs: HospSpec[];
   selectSpec: (specIndex: number) => void;
   getSelectedSpec: () => string[];
+  resetSpec: () => void;
 };
 
 export const useSpecsList = create<SpecsList>((set, get) => ({
@@ -96,5 +123,10 @@ export const useSpecsList = create<SpecsList>((set, get) => ({
     });
 
     return finalSpecList;
+  },
+  resetSpec: () => {
+    set(() => ({
+      availableSpecs: hospital_specs,
+    }));
   },
 }));

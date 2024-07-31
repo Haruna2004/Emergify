@@ -8,7 +8,7 @@ export type Message = {
 export type RegHospitalState = {
   hospitalName: string;
   description: string;
-  coverImage: string | null;
+  coverImage: string | null | any;
 
   contact: {
     phone1: string;
@@ -24,4 +24,5 @@ export type RegHospitalState = {
   };
   // methods
   changeValue: (name: string, value: string | string[] | {} | null) => void;
+  resetAllValue: () => void;
 };
