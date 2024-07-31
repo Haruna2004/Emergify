@@ -18,6 +18,7 @@
     "@radix-ui/react-toast": "^1.2.1",
     "@tailwindcss/typography": "^0.5.13",
     "@types/mapbox-gl": "^3.1.0",
+    "algoliasearch": "^4.24.0",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
     "classnames": "^2.5.1",
@@ -36,6 +37,7 @@
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "twilio": "^5.2.2",
+    "uuid": "^10.0.0",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
@@ -43,6 +45,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",

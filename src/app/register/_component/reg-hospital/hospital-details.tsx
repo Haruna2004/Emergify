@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import FormSection from "./form-sec-container";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -19,6 +19,15 @@ export default function HospitalDetailsForm({}: Props) {
   const handleChange = (e: any) => {
     changeValue(e.target.id, e.target.value);
   };
+
+  useEffect(() => {
+    if (coverImage) {
+      const objectUrl = URL.createObjectURL(coverImage);
+      setPreviewImage(objectUrl);
+
+      return () => URL.revokeObjectURL(objectUrl);
+    }
+  }, [coverImage]);
 
   const changeImage = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
