@@ -31,7 +31,7 @@ export default function Home({}: Props) {
               {link === "first-aid" && <PlusCircle className="text-2xl" />}
               {link === "hospital" && <HospitalIcon />}
               {link === "driver" && <CarFront />}
-              {link === "learn" && <Book />}
+              {link === "donate" && <WalletMinimal />}
             </div>
 
             <p className="text-base font-medium">{title}</p>
