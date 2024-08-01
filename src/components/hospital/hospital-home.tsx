@@ -1,59 +1,83 @@
 "use client";
-import { ArrowRightCircleIcon } from "lucide-react";
+import { ImagePlusIcon, SendHorizonal } from "lucide-react";
 import { useRouter } from "next/navigation";
-import React from "react";
-import useHospitalStore from "@/lib/store/useHospital";
+import React, { useState } from "react";
+import TextareaAutosize from "react-textarea-autosize";
+import HospitalMap from "./hospital-map";
+import useHospitalStore, { useHospitalList } from "@/lib/store/useHospital";
+import axios from "axios";
+import { useToast } from "../ui/use-toast";
 
 type Props = {};
 
+// bg-[#03aed2]/80
+
 export default function HospitalHome({}: Props) {
-  const update = useHospitalStore((state) => state.update);
   const router = useRouter();
-  const handleSubmit = () => {
-    router.push("/hospital/list-all");
+  const { toast } = useToast();
+  const { situationText, mapLocation, updateSituation } = useHospitalStore();
+  const { updateHospitalsList } = useHospitalList();
+  const [isProccesing, setProcessing] = useState<boolean>(false);
+
+  const handleSubmit = async () => {
+    try {
+      console.log(situationText, mapLocation);
+      setProcessing(true);
+
+      // handle processing the request
+      const result = await axios.post("/api/v1/locate-hospital", {
+        situation: situationText,
+        location: mapLocation,
+      });
+
+      const { data, status, message } = result.data;
+
+      if (status !== 200) {
+        setProcessing(false);
+        return toast({
+          description: "Failed to Locate Hospitals. Try again",
+          duration: 1000,
+          variant: "destructive",
+        });
+      }
+
+      // request was successfull
+      updateHospitalsList(data);
+      setProcessing(false);
+      updateSituation("");
+      router.push("/hospital/list-all");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
-    <div className="">
-      {/* input */}
+    <div className="flex h-full w-full flex-col">
+      <div className="h-[50%]">
+        <HospitalMap />
+      </div>
 
-      <div className="w-full rounded-sm bg-[#03aed2]/80 p-10">
-        <div className="flex w-full rounded-md bg-white p-2">
-          <input
-            type="text"
-            placeholder="Select your current Address"
-            className="flex-1 bg-transparent outline-none"
+      <div className="mx-auto mt-5 flex w-full max-w-4xl flex-col items-center gap-7 p-5">
+        <h1 className="text-center font-mono text-xl text-cyan-700">
+          Describe your situation
+        </h1>
+
+        {/* input-area */}
+        <div className="relative flex w-full flex-col gap-3 rounded-md border bg-white">
+          <TextareaAutosize
+            className="w-full resize-none p-5 text-base text-cyan-900 outline-none"
+            placeholder="E.g He got hit . . ."
+            value={situationText}
+            onChange={(e) => updateSituation(e.target.value)}
           />
-          <ArrowRightCircleIcon />
+
+          <div className="flex items-center justify-end gap-2 p-2 pb-2 pr-3 text-cyan-800">
+            <ImagePlusIcon className="-mr-1 h-12 w-12 scale-75 cursor-pointer opacity-70" />
+            <SendHorizonal
+              className="h-12 w-12 scale-75 cursor-pointer rounded-full bg-cyan-800 p-2 text-white"
+              onClick={handleSubmit}
+            />
+          </div>
         </div>
-
-        {/* location display */}
-        <p className="mt-5 text-xl font-semibold text-white">
-          Your Location: <span className="">12, ola Street, Sholanke Road</span>
-        </p>
-      </div>
-
-      {/* textarea - details of in */}
-
-      <div className="flex w-full flex-col gap-3 p-5">
-        <label htmlFor="situation" className="font-medium">
-          Describe details of the Emergency
-        </label>
-        <textarea
-          name="situation"
-          className="w-full rounded-md border border-black p-4 outline-none"
-          id=""
-          rows={5}
-        ></textarea>
-      </div>
-
-      {/* locate-button */}
-      <div className="mt-10 flex w-full items-center justify-center p-5">
-        <button
-          className="w-[90%] rounded-lg bg-[#03aed2] py-3 text-white md:w-1/3"
-          onClick={handleSubmit}
-        >
-          Locate Hospital
-        </button>
       </div>
     </div>
   );

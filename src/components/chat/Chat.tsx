@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import ChatHistory from "./chat-history";
 import ChatInput from "./chat-input";
-import { testMessages } from "@/contants/indext";
 
 type Props = {};
 
