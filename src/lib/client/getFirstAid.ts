@@ -2,7 +2,7 @@ import { Message } from "../types";
 
 export async function getAIFirstAid(messages: Message[], prompt: string) {
   try {
-    const result = await fetch("/api/v1/ai-response", {
+    const result = await fetch("/api/v1/get-first-aid", {
       method: "POST",
       body: JSON.stringify({
         prompt: prompt,
