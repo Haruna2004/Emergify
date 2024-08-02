@@ -7,6 +7,8 @@ import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
 const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
+// Map docs https://docs.mapbox.com/mapbox-gl-js/api/markers/
+
 const MapboxExample = () => {
   const mapContainerRef = useRef<any>();
   const mapRef = useRef<any>();

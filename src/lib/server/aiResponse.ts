@@ -1,8 +1,8 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Message } from "../types";
-import { firstAidSysPromp } from "@/contants/ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+const GEMINI_MODEL = "gemini-1.5-flash";
 
 const generationConfig = {
   temperature: 1,
@@ -12,10 +12,15 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
-export async function getAiChatResponse(history: Message[], prompt: string) {
+// Chat response generation
+export async function getAiChatResponse(
+  history: Message[],
+  prompt: string,
+  systemPrompt?: string,
+) {
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
-    systemInstruction: firstAidSysPromp,
+    model: GEMINI_MODEL,
+    systemInstruction: systemPrompt,
     generationConfig,
   });
 
@@ -29,9 +34,10 @@ export async function getAiChatResponse(history: Message[], prompt: string) {
 
 // Single content generation
 
-export async function getAiResponse(prompt: string) {
+export async function getAiResponse(prompt: string, systemPrompt?: string) {
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+    model: GEMINI_MODEL,
+    systemInstruction: systemPrompt,
     generationConfig,
   });
 

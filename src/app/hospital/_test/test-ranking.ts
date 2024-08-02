@@ -1,3 +1,10 @@
+interface Hospital {
+  id: string;
+  specialities: string[];
+  facilities: string[];
+  others: string[];
+}
+
 // Function to calculate the similarity score
 function calculateSimilarity(
   hospital: Hospital,
@@ -116,5 +123,31 @@ const patientHospital: Hospital = {
 
 const nBH: Hospital[] = [tC, gH];
 
+let promptInput = "He got it by a car and he is bleeding";
+
+// returns an array of id of hospitals i.e [{score: "2.3", id: "1abc"},{score: "1", id: "2abc3"}]
+// function rankHospitals(hospitals: Hospital[]) {
+
+//   return [];
+// }
+
 const rankedHospitals = rankHospitals(nBH, patientHospital);
 console.log(rankedHospitals);
+
+const hospital3 = {
+  hospital_name: "General Hospital",
+  treatments: [
+    "Chemotherapy",
+    "Radiation Therapy",
+    "Surgery",
+    "Pain Management",
+  ],
+  specialties: ["Oncology", "Cardiology", "Neurology"],
+  facilities: [
+    "Emergency Room",
+    "Intensive Care Unit (ICU)",
+    "Operating Room",
+    "Cancer Center",
+    "Radiology Department",
+  ],
+};

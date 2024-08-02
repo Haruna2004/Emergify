@@ -1,38 +1,39 @@
 "use client";
 import { useParams, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import { hostpital_list } from "../../_test/demo-data";
+import React, { useState } from "react";
 import Image from "next/image";
 import { google_map_icon, phone_icon } from "../../../../../public/assets";
 import cn from "classnames";
-import { ArrowLeftOutlined, LeftCircleOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 import { OtherDetails } from "@/components/hospital/hospital-card";
+import { useHospitalList } from "@/lib/store/useHospital";
 
 type Props = {};
 
 export default function HospitalProfile({}: Props) {
-  const { hospitalId } = useParams();
-  const [info, setInfo] = useState<any>({});
+  // const { hospitalId } = useParams();
   const [action, setAction] = useState("address");
   const router = useRouter();
+  const { selectedHospital } = useHospitalList();
 
-  useEffect(() => {
-    let hospitalInfo = hostpital_list.find((item) => item.id === hospitalId);
-    setInfo(hospitalInfo);
-  }, [hospitalId]);
+  if (!selectedHospital) return <div>loading...</div>;
 
-  if (!info) return <div>loading...</div>;
-
-  const { id, image, name, address, open, distance, rating, number_of_rating } =
-    info;
+  const {
+    id,
+    imageUrl,
+    name,
+    address,
+    open,
+    distance,
+    rating,
+    number_of_rating,
+  } = selectedHospital;
 
   return (
     <div className="">
-      {/* cover */}
-
       {/* back */}
       <div
-        className="flex items-center gap-2 px-5 py-3 font-medium text-black/80"
+        className="flex w-fit cursor-pointer items-center gap-2 px-5 py-3 text-sm font-medium text-cyan-800"
         onClick={() => router.back()}
       >
         <ArrowLeftOutlined />
@@ -42,7 +43,9 @@ export default function HospitalProfile({}: Props) {
 
       <div className="h-52 w-full">
         <Image
-          src={image}
+          src={imageUrl}
+          width={100}
+          height={100}
           alt="image"
           className="h-[100%] w-full object-cover"
         />
