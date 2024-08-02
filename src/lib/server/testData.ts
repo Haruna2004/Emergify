@@ -23,10 +23,11 @@ export const hospitals_testData = [
     distance: 14.8,
     score: 12,
     number_of_rating: 100,
+    googleMapUrl: "https://map.google.com/sskhfshfslf",
   },
   {
     id: "12382y3i28372",
-    name: "Haruna Hospital",
+    name: "Center Cancer Institute",
     imageUrl:
       "https://firebasestorage.googleapis.com/v0/b/twitterv2-43c82.appspot.com/o/images%2Fsolen-feyissa-jGmBZypoFPc-unsplash.jpg?alt=media&token=a02cd562-39b0-4bf1-a85a-be0ef840b284",
     address: "12, Muount View Road",
