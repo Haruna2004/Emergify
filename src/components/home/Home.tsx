@@ -30,7 +30,7 @@ export default function Home({}: Props) {
               {link === "first-aid" && <PlusCircle className="text-2xl" />}
               {link === "hospital" && <HospitalIcon />}
               {link === "driver" && <CarFront />}
-              {link === "donate" && <WalletMinimal />}
+              {link === "donation" && <WalletMinimal />}
             </div>
 
             <p className="text-base font-medium">{title}</p>
