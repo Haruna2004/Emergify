@@ -13,6 +13,8 @@
     "@google/generative-ai": "^0.14.1",
     "@mapbox/mapbox-gl-geocoder": "^5.0.2",
     "@picovoice/porcupine-react": "^3.0.3",
+    "@picovoice/porcupine-web": "^3.0.3",
+    "@picovoice/rhino-react": "^3.0.3",
     "@picovoice/web-voice-processor": "^4.0.9",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-dialog": "^1.1.1",
