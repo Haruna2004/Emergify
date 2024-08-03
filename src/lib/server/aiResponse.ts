@@ -1,10 +1,10 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { GoogleAIFileManager } from "@google/generative-ai/server";
 import { Message } from "../types";
-import { firstAidSysPromp } from "@/contants/ai";
-import { URL } from "url";
+import { firstAidSysPrompt } from "@/contants/ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+const GEMINI_MODEL = "gemini-1.5-flash";
 const fileManager = new GoogleAIFileManager(
   process.env.GEMINI_API_KEY as string
 );
@@ -36,16 +36,6 @@ export async function getAiChatResponse(
   return text;
 }
 
-async function uploadToGemini(path: any, mimeType: string, name: string) {
-  const uploadResult = await fileManager.uploadFile(path, {
-    mimeType: mimeType,
-    displayName: "new name",
-  });
-  const file = uploadResult.file;
-  console.log(`Uploaded file ${file.displayName} as: ${file.name}`);
-  return file;
-}
-
 export async function getAiImageResponse(
   history: Message[],
   prompt: string,
@@ -54,50 +44,7 @@ export async function getAiImageResponse(
 ) {
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
-    systemInstruction: firstAidSysPromp,
-    generationConfig,
-  });
-
-  const chatSession = model.startChat({
-    history: [
-      {
-        role: "user",
-        parts: [
-          {
-            text: `Image data: ${buffer}`, // Incorporate base64 image data
-          },
-        ],
-      },
-      ...history,
-    ],
-  });
-
-  const result = await chatSession.sendMessage(`${prompt}: ${buffer}`);
-  const text = result.response.text();
-
-  console.log(text);
-  return text;
-}
-
-async function uploadToGemini(path: any, mimeType: string, name: string) {
-  const uploadResult = await fileManager.uploadFile(path, {
-    mimeType: mimeType,
-    displayName: "new name",
-  });
-  const file = uploadResult.file;
-  console.log(`Uploaded file ${file.displayName} as: ${file.name}`);
-  return file;
-}
-
-export async function getAiImageResponse(
-  history: Message[],
-  prompt: string,
-  file: File,
-  buffer: ArrayBuffer
-) {
-  const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
-    systemInstruction: firstAidSysPromp,
+    systemInstruction: firstAidSysPrompt,
     generationConfig,
   });
 
