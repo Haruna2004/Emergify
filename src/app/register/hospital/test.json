@@ -1,0 +1,40 @@
+{
+  "hospitalName": "Haruna Faruk",
+  "coverImage": "https://firebasestorage.googleapis.com/v0/b/twitterv2-43c82.appspot.com/o/images%2Ffcf78910-e885-4a5a-bcfd-ae0be4c794a7%2Fcharacter_profile.jpg?alt=media&token=ce2ae122-01c9-4117-9de8-4ad56f16a82a",
+  "description": "Who do you need to be",
+  "contact": {
+    "phone1": "08164475065",
+    "phone2": "08132284899",
+    "emailAddress": "harunafaruk2004@gmail.com"
+  },
+  "address": {
+    "street": "12, Olarenwaju street",
+    "city": "Agege",
+    "state": "Lagos",
+    "country": "Nigeria"
+  },
+  "googleMapLink": "https://maps.app.goo.gl/VbENmm4ZiNFbGSqC9",
+  "treatments": [
+    "ACTH Stimulation Tests",
+    "Anaemia",
+    "Infertility and reproductive endocrinology",
+    "PCOD",
+    "Cardiac Arrest",
+    "Heart Attack",
+    "Stroke",
+    "Cognitive Disorders",
+    "Dementia",
+    "Epilepsy Surgery"
+  ],
+  "specialities": [
+    "Anaesthesiology",
+    "Arthroscopy & Sports Medicine",
+    "Bone Marrow Transplant",
+    "Lab Medicine",
+    "Laparoscopic and Bariatric Surgery",
+    "Liver Transplantation and Hepatobiliary Surgery",
+    "Spine Surgery",
+    "Surgical Oncology",
+    "Vascular & Endovascular Surgery"
+  ]
+}
