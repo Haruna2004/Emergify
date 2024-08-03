@@ -36,7 +36,6 @@ export default function ChatInput({
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      // setFile(reader.result!);
       // @ts-ignore
       const base64Data = reader.result.split(",")[1];
 
@@ -72,32 +71,32 @@ export default function ChatInput({
     ]);
 
     // call ai and get response
-
+    let result = null;
     if (textInput && file !== null) {
       console.log("uploading file");
-      const result = await sendImagePrompt(messages, textInput, file, buffer);
+      result = await sendImagePrompt(messages, textInput, file, buffer);
     } else {
-      const result = await getAIFirstAid(messages, textInput);
+      result = await getAIFirstAid(messages, textInput);
 
       // const result = "Ai is responding";
-
-      if (!result) {
-        setMessages(oldMessages);
-        setTextInput(currentText);
-        setLoadingAI(false);
-        return toast({
-          description: "Sorry we could not get response. Try again",
-          duration: 1000,
-        });
-      }
-
-      setMessages((prevMessages: any) => [
-        ...prevMessages,
-        { role: "model", parts: [{ text: result }] },
-      ]);
-      setTextInput("");
-      setLoadingAI(false);
     }
+
+    if (!result) {
+      setMessages(oldMessages);
+      setTextInput(currentText);
+      setLoadingAI(false);
+      return toast({
+        description: "Sorry we could not get response. Try again",
+        duration: 1000,
+      });
+    }
+
+    setMessages((prevMessages: any) => [
+      ...prevMessages,
+      { role: "model", parts: [{ text: result }] },
+    ]);
+    setTextInput("");
+    setLoadingAI(false);
   }
 
   return (

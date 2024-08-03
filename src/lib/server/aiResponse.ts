@@ -31,18 +31,6 @@ export async function getAiChatResponse(history: Message[], prompt: string) {
   return text;
 }
 
-async function fileToGenerativePart(file: any) {
-  const base64EncodedDataPromise = new Promise((resolve) => {
-    const reader = new FileReader();
-    // @ts-ignore
-    reader.onloadend = () => resolve(reader.result!.split(",")[1]);
-    reader.readAsDataURL(file);
-  });
-  return {
-    inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
-  };
-}
-
 async function uploadToGemini(path: any, mimeType: string, name: string) {
   const uploadResult = await fileManager.uploadFile(path, {
     mimeType: mimeType,
@@ -65,8 +53,6 @@ export async function getAiImageResponse(
     generationConfig,
   });
 
-  const uploadedFile = await uploadToGemini(buffer, file.type, file.name);
-
   const chatSession = model.startChat({
     history: [
       {
@@ -86,18 +72,6 @@ export async function getAiImageResponse(
 
   console.log(text);
   return text;
-
-  // return await uploadToGemini(file, file.type).then(
-  //   async (res) => {
-  //     console.log("returned file", res);
-  //     const result = await model.generateContent([res.uri, prompt]);
-
-  //     const text = result.response.text();
-
-  //     console.log(text);
-  //     return text;
-  //   },
-  // );
 }
 
 // Single content generation
@@ -117,31 +91,3 @@ export async function getAiResponse(prompt: string) {
   console.log(text);
   return text;
 }
-
-// const chatSession = model.startChat({
-//   generationConfig,
-//   // safetySettings: Adjust safety settings
-//   // See https://ai.google.dev/gemini-api/docs/safety-settings
-//   history: [
-//     {
-//       role: "user",
-//       parts: [
-//         {
-//           fileData: {
-//             mimeType: files[0].mimeType,
-//             fileUri: files[0].uri,
-//           },
-//         },
-//         { text: "what is in this image" },
-//       ],
-//     },
-//     {
-//       role: "model",
-//       parts: [
-//         {
-//           text: "A beagle dog looks directly at the camera. The dog has its ears perked and is looking intently at the viewer. The dog's nose is in focus, and the rest of the dog's face is slightly out of focus. The background is a blurry brown color.",
-//         },
-//       ],
-//     },
-//   ],
-// });
