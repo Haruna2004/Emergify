@@ -1,21 +1,29 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
+import { HospitalType } from "../types";
 
 type HospitalState = {
-  hospitalName: string;
-  score: number;
-  update: (name: string) => void;
+  situationText: string;
+  updateSituation: (value: string) => void;
+  mapLocation: number[];
+  updateMapLocation: (long_lat: number[]) => void;
 };
 
 const useHospitalStore = create(
   devtools<HospitalState>((set, get) => ({
     // start-here
-    hospitalName: "",
-    score: 0,
-    update: (name: string) => {
-      set((state) => ({
-        hospitalName: name,
-      }));
+    situationText: "",
+    // [long,lat]
+    mapLocation: [],
+    updateSituation: (value: string) => {
+      set({
+        situationText: value,
+      });
+    },
+    updateMapLocation: (long_lat) => {
+      set({
+        mapLocation: [...long_lat],
+      });
     },
 
     // end-here
@@ -23,4 +31,26 @@ const useHospitalStore = create(
 );
 
 export default useHospitalStore;
-//Reference: https://medium.com/globant/react-state-management-b0c81e0cbbf3
+
+export type HospitalListType = {
+  locatedHospitals: HospitalType[] | null;
+  selectedHospital: HospitalType | null;
+  updateHospitalsList: (hospitals: HospitalType[]) => void;
+  selectHospital: (hospital: HospitalType) => void;
+};
+
+export const useHospitalList = create<HospitalListType>((set, get) => ({
+  locatedHospitals: null,
+  selectedHospital: null,
+  updateHospitalsList: (hospitals) => {
+    set({
+      locatedHospitals: hospitals,
+      selectedHospital: null,
+    });
+  },
+  selectHospital: (hospital) => {
+    set({
+      selectedHospital: hospital,
+    });
+  },
+}));

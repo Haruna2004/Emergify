@@ -9,6 +9,18 @@ export type Message = {
   }[];
 };
 
+export type HospitalType = {
+  id: string;
+  name: string;
+  imageUrl: string;
+  address: string;
+  open: boolean;
+  rating: number;
+  distance: number;
+  score: number;
+  number_of_rating: number;
+};
+
 export type RegHospitalState = {
   hospitalName: string;
   description: string;

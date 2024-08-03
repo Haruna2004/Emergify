@@ -4,23 +4,39 @@ import cn from "classnames";
 
 import { EnvironmentFilled, StarFilled } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
+import { HospitalType } from "@/lib/types";
+import { useHospitalList } from "@/lib/store/useHospital";
 
 type Props = {
-  hospitalInfo: any;
+  hospitalInfo: HospitalType;
 };
 
 export default function HospitalCard({ hospitalInfo }: Props) {
+  const { selectHospital } = useHospitalList();
   const router = useRouter();
-  const { id, image, name, address, open, distance, rating, number_of_rating } =
-    hospitalInfo;
+  const {
+    id,
+    imageUrl,
+    name,
+    address,
+    open,
+    distance,
+    rating,
+    number_of_rating,
+  } = hospitalInfo;
   return (
     <div
-      onClick={() => router.push(`/hospital/profile/${id}`)}
+      onClick={() => {
+        selectHospital(hospitalInfo);
+        router.push(`/hospital/profile/${id}`);
+      }}
       className="relative flex h-48 w-full cursor-pointer items-center gap-3 rounded-md border"
     >
       <Image
-        src={image}
+        src={imageUrl}
         alt={name}
+        width={100}
+        height={100}
         className="h-full w-full rounded-md object-cover"
       />
       <div className="absolute bottom-0 left-0 h-[50%] w-full rounded-b-md bg-black/40 p-2 text-white">

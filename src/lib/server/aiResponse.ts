@@ -6,7 +6,7 @@ import { URL } from "url";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
 const fileManager = new GoogleAIFileManager(
-  process.env.GEMINI_API_KEY as string,
+  process.env.GEMINI_API_KEY as string
 );
 const generationConfig = {
   temperature: 1,
@@ -16,10 +16,15 @@ const generationConfig = {
   responseMimeType: "text/plain",
 };
 
-export async function getAiChatResponse(history: Message[], prompt: string) {
+// Chat response generation
+export async function getAiChatResponse(
+  history: Message[],
+  prompt: string,
+  systemPrompt?: string
+) {
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
-    systemInstruction: firstAidSysPromp,
+    model: GEMINI_MODEL,
+    systemInstruction: systemPrompt,
     generationConfig,
   });
 
@@ -45,7 +50,50 @@ export async function getAiImageResponse(
   history: Message[],
   prompt: string,
   file: File,
-  buffer: ArrayBuffer,
+  buffer: ArrayBuffer
+) {
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+    systemInstruction: firstAidSysPromp,
+    generationConfig,
+  });
+
+  const chatSession = model.startChat({
+    history: [
+      {
+        role: "user",
+        parts: [
+          {
+            text: `Image data: ${buffer}`, // Incorporate base64 image data
+          },
+        ],
+      },
+      ...history,
+    ],
+  });
+
+  const result = await chatSession.sendMessage(`${prompt}: ${buffer}`);
+  const text = result.response.text();
+
+  console.log(text);
+  return text;
+}
+
+async function uploadToGemini(path: any, mimeType: string, name: string) {
+  const uploadResult = await fileManager.uploadFile(path, {
+    mimeType: mimeType,
+    displayName: "new name",
+  });
+  const file = uploadResult.file;
+  console.log(`Uploaded file ${file.displayName} as: ${file.name}`);
+  return file;
+}
+
+export async function getAiImageResponse(
+  history: Message[],
+  prompt: string,
+  file: File,
+  buffer: ArrayBuffer
 ) {
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
@@ -76,9 +124,10 @@ export async function getAiImageResponse(
 
 // Single content generation
 
-export async function getAiResponse(prompt: string) {
+export async function getAiResponse(prompt: string, systemPrompt?: string) {
   const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
+    model: GEMINI_MODEL,
+    systemInstruction: systemPrompt,
     generationConfig,
   });
 

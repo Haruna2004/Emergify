@@ -1,64 +1,96 @@
-import { create } from "zustand";
-import { RegHospitalState } from "../types";
 import {
   hospital_specs,
   hospital_treatment,
   HospSpec,
   HospTreat,
 } from "@/contants/hospital-fts";
+import { create } from "zustand";
 
-const regHospitalForm = create<RegHospitalState>((set) => ({
-  hospitalName: "",
-  description: "",
-  coverImage: "",
-  contact: {
-    phone1: "",
-    phone2: "",
-    emailAddress: "",
-  },
-  googleMapLink: "",
+type MedicsAvail = {
+  day: string;
+  times: {
+    startTime: string;
+    endTime: string;
+  }[];
+};
+
+type RegMedicsState = {
+  medicsName: string;
+  bio: string;
+  profileImage: any;
+  availability: MedicsAvail[];
+
   address: {
-    street: "",
+    city: string;
+    state: string;
+    country: string;
+  };
+
+  experience: number;
+  institution: string;
+  contact: {
+    emailAddress: string;
+    phoneNumber: string;
+  };
+
+  changeValue: (name: string, value: any) => void;
+  resetAllValue: () => void;
+};
+
+const regMedicsForm = create<RegMedicsState>((set) => ({
+  medicsName: "",
+  bio: "",
+  profileImage: null,
+  availability: [],
+  address: {
     city: "",
     state: "",
     country: "",
   },
+
+  experience: 0,
+  institution: "",
+
+  contact: {
+    emailAddress: "",
+    phoneNumber: "",
+  },
   changeValue: (name, value) => {
-    set((_state) => ({
+    set(() => ({
       [name]: value,
     }));
   },
   resetAllValue: () => {
     set(() => ({
-      hospitalName: "",
-      description: "",
-      coverImage: "",
-      contact: {
-        phone1: "",
-        phone2: "",
-        emailAddress: "",
-      },
-      googleMapLink: "",
+      medicsName: "",
+      bio: "",
+      profileImage: null,
+      availability: [],
       address: {
-        street: "",
         city: "",
         state: "",
         country: "",
+      },
+      experience: 0,
+      institution: "",
+      contact: {
+        emailAddress: "",
+        phoneNumber: "",
       },
     }));
   },
 }));
 
-export default regHospitalForm;
+export default regMedicsForm;
 
-type TreatList = {
+type MedicsTreatList = {
   availableTreatment: HospTreat[];
   selectTreat: (categoryIndex: number, treatIndex: number) => void;
   getSelectedTreat: () => string[];
   resetTreat: () => void;
 };
 
-export const useTreatmentList = create<TreatList>((set, get) => ({
+export const useMedicsTreatmentList = create<MedicsTreatList>((set, get) => ({
   availableTreatment: [...hospital_treatment],
 
   selectTreat: (categoryIndex, treatIndex) => {
@@ -94,15 +126,15 @@ export const useTreatmentList = create<TreatList>((set, get) => ({
   },
 }));
 
-type SpecsList = {
+type MedicsSpecsList = {
   availableSpecs: HospSpec[];
   selectSpec: (specIndex: number) => void;
   getSelectedSpec: () => string[];
   resetSpec: () => void;
 };
 
-export const useSpecsList = create<SpecsList>((set, get) => ({
-  availableSpecs: [...hospital_specs],
+export const useMedicsSpecsList = create<MedicsSpecsList>((set, get) => ({
+  availableSpecs: hospital_specs,
   selectSpec: (specIndex) => {
     set((state) => {
       const newAvailSpecs = [...state.availableSpecs];
@@ -126,7 +158,7 @@ export const useSpecsList = create<SpecsList>((set, get) => ({
   },
   resetSpec: () => {
     set(() => ({
-      availableSpecs: [...hospital_specs],
+      availableSpecs: hospital_specs,
     }));
   },
 }));

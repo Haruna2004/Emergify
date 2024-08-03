@@ -1,7 +1,7 @@
 import {
-  CarFront,
   HospitalIcon,
   PlusCircle,
+  Stethoscope,
   WalletMinimal,
 } from "lucide-react";
 import Link from "next/link";
@@ -10,10 +10,10 @@ import React from "react";
 type Props = {};
 
 const selections = [
-  { title: "Get First Aid", link: "first-aid" },
+  { title: "First Aid", link: "first-aid" },
   { title: "Locate Best Hospital", link: "hospital" },
-  { title: "Emergency Responder", link: "driver" },
-  { title: "Donate", link: "donate" },
+  { title: "Medical Responder", link: "driver" },
+  { title: "Donate", link: "donation" },
 ];
 
 export default function Home({}: Props) {
@@ -29,8 +29,8 @@ export default function Home({}: Props) {
             <div className="text-2xl">
               {link === "first-aid" && <PlusCircle className="text-2xl" />}
               {link === "hospital" && <HospitalIcon />}
-              {link === "driver" && <CarFront />}
-              {link === "donate" && <WalletMinimal />}
+              {link === "driver" && <Stethoscope />}
+              {link === "donation" && <WalletMinimal />}
             </div>
 
             <p className="text-base font-medium">{title}</p>

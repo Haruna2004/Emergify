@@ -3,6 +3,8 @@ import React from "react";
 
 type Props = {};
 
+//https://www.youtube.com/watch?v=tYqoPwv7QGc - Algolia text search
+
 export default function Hospital({}: Props) {
   return (
     <div>

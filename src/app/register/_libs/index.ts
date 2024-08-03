@@ -8,12 +8,13 @@ export async function handleImageUpload(
   setImageUrl: any,
 ) {
   if (!file) {
-    toast({
-      description: "You have added a the cover image",
+    return toast({
+      description: "You have not added the profile image",
       variant: "destructive",
       duration: 1000,
     });
   }
+
   const fileId = uuidv4();
   const storageRef = ref(storage, `images/${fileId}/${file.name}`);
 
