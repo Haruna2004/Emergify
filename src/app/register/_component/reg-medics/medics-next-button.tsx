@@ -39,7 +39,7 @@ export default function MedicsNextButton({ step, setStep }: Props) {
   const [imageUrl, setImageUrl] = useState("");
   const [isSending, setIsSending] = useState(false);
 
-  async function handleSubmitHospital() {
+  async function handleSubmitMedics() {
     setIsSending(true);
 
     await handleImageUpload(profileImage, toast, setImageUrl);
@@ -89,7 +89,7 @@ export default function MedicsNextButton({ step, setStep }: Props) {
     }
 
     toast({
-      description: "Something went wrong. Could not register Hospital",
+      description: "Something went wrong. Could not register",
       variant: "destructive",
       duration: 1000,
     });
@@ -114,7 +114,7 @@ export default function MedicsNextButton({ step, setStep }: Props) {
         onClick={() => {
           if (step === LAST_STEP) {
             if (isSending) return;
-            handleSubmitHospital();
+            handleSubmitMedics();
             return;
           }
           setStep((prev) => prev + 1);
