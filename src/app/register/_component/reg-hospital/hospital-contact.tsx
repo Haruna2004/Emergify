@@ -1,5 +1,5 @@
 import React from "react";
-import FormSection from "./form-sec-container";
+import FormSection from "../form-sec-container";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import regHospitalForm from "@/lib/store/regHospitalForm";

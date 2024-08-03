@@ -1,4 +1,4 @@
-import { useTreatmentList } from "@/lib/store/regHospitalForm";
+import { useMedicsTreatmentList } from "@/lib/store/regMedicsForm";
 import { getFilteredList } from "@/lib/utils";
 import { CheckOutlined } from "@ant-design/icons";
 import React, { useMemo } from "react";
@@ -7,8 +7,8 @@ type Props = {
   debouncedInputValue: string;
 };
 
-export default function SearchResult({ debouncedInputValue }: Props) {
-  const { availableTreatment, selectTreat } = useTreatmentList();
+export default function MedicsSearchResult({ debouncedInputValue }: Props) {
+  const { availableTreatment, selectTreat } = useMedicsTreatmentList();
 
   const filteredList = useMemo(() => {
     return Array.isArray(availableTreatment)

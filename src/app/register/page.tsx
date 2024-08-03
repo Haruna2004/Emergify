@@ -14,7 +14,6 @@ type Props = {};
 
 const selections = [
   { title: "Medical Professional", link: "practitioner" },
-  { title: "Nearby Responder", link: "nearby" },
   { title: "Medical Hospital", link: "hospital" },
   { title: "Donation", link: "donate" },
 ];
