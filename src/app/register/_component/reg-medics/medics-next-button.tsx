@@ -75,7 +75,7 @@ export default function MedicsNextButton({ step, setStep }: Props) {
       setIsSending(false);
 
       toast({
-        description: "Hospital Registered Successfully",
+        description: "You are have been Registered Successfully",
         variant: "default",
         duration: 1000,
       });
