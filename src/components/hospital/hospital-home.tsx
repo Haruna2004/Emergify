@@ -52,8 +52,8 @@ export default function HospitalHome({}: Props) {
   };
   return (
     <div className="flex h-full w-full flex-col">
-      <div className="h-[50%]">
-        <HospitalMap />
+      <div className="h-[50%] bg-gray-200">
+        <HospitalMap />{" "}
       </div>
 
       <div className="mx-auto mt-5 flex w-full max-w-4xl flex-col items-center gap-7 p-5">
@@ -71,7 +71,7 @@ export default function HospitalHome({}: Props) {
           />
 
           <div className="flex items-center justify-end gap-2 p-2 pb-2 pr-3 text-cyan-800">
-            <ImagePlusIcon className="-mr-1 h-12 w-12 scale-75 cursor-pointer opacity-70" />
+            <ImagePlusIcon className="-mr-1 h-10 w-10 scale-75 cursor-pointer opacity-60" />
             <SendHorizonal
               className="h-12 w-12 scale-75 cursor-pointer rounded-full bg-cyan-800 p-2 text-white"
               onClick={handleSubmit}

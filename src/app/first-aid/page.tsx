@@ -4,7 +4,7 @@ type Props = {};
 
 export default function FirstAid({}: Props) {
   return (
-    <div className="h-[90%]">
+    <div className="h-full">
       <Chat />
     </div>
   );

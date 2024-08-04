@@ -1,9 +1,5 @@
-import Home from "@/components/home/Home";
+import { redirect } from "next/navigation";
 
 export default function Main() {
-  return (
-    <main className="h-[90%]">
-      <Home />
-    </main>
-  );
+  return redirect("/hospital");
 }

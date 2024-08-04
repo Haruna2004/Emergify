@@ -74,7 +74,7 @@ export const VoiceProvider = ({ children }: Props) => {
   // detect wake work
   useEffect(() => {
     let timer: any;
-    if (wakeWordDetected === KEYWORD) {
+    if (wakeWordDetected) {
       rhinoProcess();
       console.log("Awaiting command");
 
