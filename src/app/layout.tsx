@@ -6,8 +6,9 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/global/Header";
 import { Toaster } from "@/components/ui/toaster";
 import Sidebar from "@/components/global/Sidebar";
-import VoiceAssist from "@/lib/client/voice-assist/useVoiceAssist";
-import VoiceControl from "@/lib/client/voice-assist/voiceControl";
+import { VoiceProvider } from "@/lib/client/contexts/voice-context";
+// import VoiceAssist from "@/lib/client/voice-assist/useVoiceAssist";
+// import VoiceControl from "@/lib/client/voice-assist/voiceControl";
 
 export const metadata: Metadata = {
   title: "Emergify",
@@ -26,12 +27,14 @@ export default function RootLayout({
           "h-screen max-h-screen bg-background font-sans antialiased",
         )}
       >
-        <Header />
-        <Sidebar />
-        {children}
-        {/* <VoiceAssist /> */}
-        <VoiceControl />
-        <Toaster />
+        <VoiceProvider>
+          <Header />
+          <Sidebar />
+          {children}
+          {/* <VoiceAssist /> */}
+          {/* <VoiceControl /> */}
+          <Toaster />
+        </VoiceProvider>
       </body>
     </html>
   );
