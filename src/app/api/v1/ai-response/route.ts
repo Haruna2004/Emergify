@@ -1,5 +1,7 @@
 import { getAiChatResponse } from "@/lib/server/aiResponse";
 
+export const runtime = "edge";
+
 export async function POST(request: Request) {
   try {
     const { history, prompt } = await request.json();
