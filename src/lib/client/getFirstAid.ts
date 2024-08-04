@@ -1,12 +1,13 @@
 import { Message } from "../types";
 
-export async function getAIFirstAid(messages: Message[], prompt: string) {
+export async function getAIFirstAid(messages: Message[], prompt: string, audio?: any) {
   try {
     const result = await fetch("/api/v1/get-first-aid", {
       method: "POST",
       body: JSON.stringify({
         prompt: prompt,
         history: messages,
+        audio: audio,
       }),
     });
 

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { app_logo, vercel_logo } from "../../../public/assets";
+import { app_logo } from "../../../public/assets";
 import Markdown from "react-markdown";
 
 type Props = {

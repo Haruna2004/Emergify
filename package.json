@@ -10,8 +10,11 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.4.0",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@google/generative-ai": "^0.14.1",
     "@mapbox/mapbox-gl-geocoder": "^5.0.2",
+    "@mui/material": "^5.16.6",
     "@picovoice/porcupine-react": "^3.0.3",
     "@picovoice/porcupine-web": "^3.0.3",
     "@picovoice/rhino-react": "^3.0.3",
