@@ -35,18 +35,6 @@ export default function Header({}: Props) {
         </button>
         <MenuIcon className="cursor-pointer" onClick={toggleSidebar} />
       </div>
-
-      {/* <div className="hidden gap-5 sm:flex">
-        {sidebar_links.map(({ title, link }) => (
-          <Link
-            href={link}
-            key={link}
-            className="cursor-pointer font-medium text-cyan-700"
-          >
-            {title}
-          </Link>
-        ))}
-      </div> */}
     </div>
   );
 }

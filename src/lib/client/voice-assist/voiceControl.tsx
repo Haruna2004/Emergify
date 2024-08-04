@@ -45,6 +45,8 @@ export default function VoiceControl({}: Props) {
     if (inference !== null) {
       // ... use inference detection result
       console.log("command result", inference);
+      // @ts-ignore
+      // handleIntentRequest(inference);
     }
   }, [inference]);
 
