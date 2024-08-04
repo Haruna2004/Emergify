@@ -64,7 +64,7 @@ const HospitalMap = () => {
     return () => mapRef.current.remove();
   }, []);
 
-  return <div ref={mapContainerRef} className="h-[50vh] w-full" />;
+  return <div ref={mapContainerRef} className="h-[50vh] w-full md:h-[100vh]" />;
 };
 
 export default HospitalMap;

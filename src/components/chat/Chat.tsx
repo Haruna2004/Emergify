@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import ChatHistory from "./chat-history";
 import ChatInput from "./chat-input";
+// import { testMessages } from "@/lib/client/mock-data/chat-message-demo";
 
 type Props = {};
 

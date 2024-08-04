@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Sidebar from "@/components/global/Sidebar";
 import { VoiceProvider } from "@/lib/client/contexts/voice-context";
 import Footer from "@/components/global/Footer";
+import SidePanel from "@/components/global/SidePanel";
 
 export const metadata: Metadata = {
   title: "Emergify",
@@ -27,10 +28,13 @@ export default function RootLayout({
         )}
       >
         <VoiceProvider>
-          <div className="flex h-full flex-col">
+          <div className="flex h-full flex-col md:flex-row">
             <Header />
             <Sidebar />
-            <div className="flex-1 overflow-auto">{children}</div>
+            <SidePanel />
+            <div className="scrollbar-thin flex-1 overflow-auto md:flex-[0.75] lg:flex-[0.85]">
+              {children}
+            </div>
             <Footer />
           </div>
           <Toaster />

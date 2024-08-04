@@ -19,7 +19,7 @@ export default function Sidebar({}: Props) {
   return (
     <div
       className={cn(
-        "absolute right-5 top-20 z-10 h-fit w-40 rounded-md border bg-white p-5",
+        "absolute right-5 top-20 z-10 h-fit w-40 rounded-md border bg-white p-5 md:hidden",
         !sidebar && "hidden",
       )}
     >
