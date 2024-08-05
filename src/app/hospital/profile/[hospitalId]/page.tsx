@@ -1,4 +1,5 @@
 "use client";
+export const runtime = "edge";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { hostpital_list } from "../../_test/demo-data";

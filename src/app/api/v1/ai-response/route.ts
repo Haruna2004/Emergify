@@ -1,6 +1,5 @@
-import { getAiChatResponse } from "@/lib/server/aiResponse";
-
 export const runtime = "edge";
+import { getAiChatResponse } from "@/lib/server/aiResponse";
 
 export async function POST(request: Request) {
   try {
