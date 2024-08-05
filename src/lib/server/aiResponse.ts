@@ -19,6 +19,8 @@ export async function getAiChatResponse(history: Message[], prompt: string) {
     generationConfig,
   });
 
+  console.log("gemini key", process.env.GEMINI_API_KEY);
+
   const chatSession = model.startChat({ history: history });
   const result = await chatSession.sendMessage(prompt);
   const text = result.response.text();
