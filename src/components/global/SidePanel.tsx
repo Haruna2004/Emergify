@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import {
   ArrowUpRight,
   BriefcaseMedical,
@@ -56,7 +56,7 @@ export default function SidePanel({}: Props) {
 
       <div
         className={cn(
-          "mt-[3vh] flex w-[85%] cursor-pointer items-center justify-between gap-5 rounded-full border bg-white p-1 px-3 font-medium text-cyan-700",
+          "mt-[3vh] flex w-[85%] cursor-pointer items-center justify-between gap-3 rounded-full border bg-white p-1 px-3 font-medium text-cyan-700 lg:w-[90%]",
           isPorcupineListening && "animate-pulse border-cyan-500",
         )}
         onClick={turnOnVoiceMode}
@@ -96,13 +96,13 @@ function NavigationLinks() {
 
 function NavigationButtons() {
   return (
-    <div className="mt-[5vh] flex flex-col gap-5">
+    <div className="mt-[5vh] flex w-full flex-col items-center justify-center gap-5">
       {nav_buttons.map(({ value, title }) => (
         // buttons
         <Link
           href={`/${value}`}
           key={value}
-          className="flex w-full cursor-pointer items-center gap-2 text-cyan-700"
+          className="flex cursor-pointer items-center justify-start gap-2 text-cyan-700"
         >
           <div>
             {value === "first-aid" && <BriefcaseMedical className="h-5 w-5" />}

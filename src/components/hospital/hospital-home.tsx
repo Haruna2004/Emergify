@@ -56,13 +56,13 @@ export default function HospitalHome({}: Props) {
         <HospitalMap />{" "}
       </div>
 
-      <div className="mx-auto mt-5 flex w-full max-w-4xl flex-col items-center gap-7 p-5 md:absolute md:top-20 md:mx-auto">
+      <div className="mx-auto mt-5 flex w-full flex-col items-center gap-7 p-5 md:absolute md:top-20 md:mx-auto">
         <h1 className="text-center font-mono text-xl text-cyan-700 md:rounded-sm md:bg-white/40 md:p-2 md:text-cyan-800">
           Describe your situation
         </h1>
 
         {/* input-area */}
-        <div className="relative flex w-full flex-col gap-3 rounded-md border bg-white focus-within:bg-white/70 md:bg-white/50">
+        <div className="relative flex w-full flex-col gap-3 rounded-md border bg-white focus-within:bg-white/70 md:max-w-4xl md:bg-white/50">
           <TextareaAutosize
             className="w-full resize-none p-5 text-base text-cyan-900 outline-none md:bg-transparent"
             placeholder="E.g He got hit . . ."
