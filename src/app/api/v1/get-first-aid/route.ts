@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { firstAidSysPrompt } from "@/contants/ai";
 import { getAiChatResponse } from "@/lib/server/aiResponse";
 
