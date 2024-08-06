@@ -1,4 +1,5 @@
-export const runtime = "edge";
+export const runtime = "nodejs";
+export const dynamic = "force-static";
 
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";

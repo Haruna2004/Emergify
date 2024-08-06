@@ -1,3 +1,4 @@
+export const runtime = "edge";
 import { getHospitals } from "@/lib/server/getHospitalsList";
 
 export async function POST(request: Request) {

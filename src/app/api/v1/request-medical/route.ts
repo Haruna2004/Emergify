@@ -1,3 +1,5 @@
+export const runtime = "edge";
+
 import { doctor_testData } from "@/lib/server/testData";
 
 export async function POST(request: Request) {
