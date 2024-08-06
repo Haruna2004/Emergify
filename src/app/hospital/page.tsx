@@ -7,7 +7,7 @@ type Props = {};
 
 export default function Hospital({}: Props) {
   return (
-    <div className="">
+    <div className="h-full">
       <HospitalHome />
     </div>
   );

@@ -43,6 +43,8 @@ function rankHospitals(
     .sort((a, b) => b.score - a.score);
 }
 
+// user input -> He fell down and he is unconcious
+
 // Example usage
 const tC: Hospital = {
   id: "2abc3",

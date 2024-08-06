@@ -3,7 +3,7 @@ import { useVoiceContext } from "@/lib/client/contexts/voice-context";
 import useToggleStore from "@/lib/store/useToggle";
 import { AudioLines, EllipsisVertical } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import cn from "classnames";
 
 import {
@@ -12,21 +12,31 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useTextToSpeech } from "@/lib/client/voice-assist/use-speech";
+import { sleep } from "@/lib/utils";
+import { openingStatement } from "@/contants/indext";
 
 type Props = {};
 
 export default function Header({}: Props) {
   const { toggleSidebar } = useToggleStore();
+  const [speechText, setSpeechText] = useState<string>("");
+  const { playText, speechStatus, stopText } = useTextToSpeech(speechText);
+
   const { startPorcupine, stopPorcupine, isPorcupineListening } =
     useVoiceContext();
 
-  function turnOnVoiceMode() {
+  async function turnOnVoiceMode() {
     if (isPorcupineListening) {
       stopPorcupine();
       console.log("Stopped listeing");
+      if (speechStatus) stopText();
       return;
     }
     startPorcupine();
+    setSpeechText(openingStatement());
+    await sleep(100);
+    playText();
   }
 
   return (

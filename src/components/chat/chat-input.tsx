@@ -102,6 +102,7 @@ export default function ChatInput({
       <TextareaAutosize
         className="w-full resize-none text-base text-cyan-900 outline-none md:bg-transparent"
         placeholder="Enter a prompt here"
+        autoFocus={true}
         value={textInput}
         onChange={(e) => setTextInput(e.target.value)}
       />

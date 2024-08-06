@@ -8,7 +8,7 @@ export function useTextToSpeech(text: string) {
   const { Text, speechStatus, start, pause, stop } = useSpeech({
     text,
     pitch: 1.1,
-    rate: 1,
+    rate: 1.1,
     volume: 0.55,
     lang: "en-US",
     voiceURI: "Google UK English Male",
