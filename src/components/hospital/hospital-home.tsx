@@ -2,7 +2,6 @@
 import { ImagePlusIcon, SendHorizonal } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import TextareaAutosize from "react-textarea-autosize";
 import HospitalMap from "./hospital-map";
 import useHospitalStore, { useHospitalList } from "@/lib/store/useHospital";
 import axios from "axios";
@@ -11,6 +10,7 @@ import Image from "next/image";
 import { app_logo } from "../../../public/assets";
 import cn from "classnames";
 import { sleep } from "@/lib/utils";
+import SituationInput from "./situation-input";
 
 type Props = {};
 
@@ -68,24 +68,10 @@ export default function HospitalHome({}: Props) {
         <HospitalMap />{" "}
       </div>
 
-      {/* loading */}
-      <div
-        className={cn(
-          "absolute top-0 z-20 flex h-full w-full items-center justify-center bg-white p-10",
-          !isProccesing && "hidden",
-        )}
-      >
-        <div className="-mt-28 flex flex-col items-center gap-3 text-xl">
-          <Image
-            src={app_logo}
-            alt="app log"
-            className="h-14 w-14 animate-pulse duration-1000"
-          />
-          <p className="text-center leading-relaxed tracking-wider text-cyan-500">
-            Please Hold on. Emergify is locating the best hospital around you.
-          </p>
-        </div>
-      </div>
+      <RequestLoading
+        isProcessing={isProccesing}
+        text="Please Hold on. Emergify is locating the best hospital around you."
+      />
 
       <div className="mx-auto flex h-fit w-full flex-col items-center gap-7 p-5 md:absolute md:top-20 md:mx-auto">
         <SituationInput
@@ -98,42 +84,30 @@ export default function HospitalHome({}: Props) {
   );
 }
 
-type SituationProps = {
-  situationText: string;
-  updateSituation: any;
-  handleSubmit: any;
-};
-
-function SituationInput({
-  situationText,
-  updateSituation,
-  handleSubmit,
-}: SituationProps) {
-  const [imageInput, setImageInput] = useState<any>(null);
+function RequestLoading({
+  isProcessing,
+  text,
+}: {
+  isProcessing: boolean;
+  text: string;
+}) {
   return (
-    <>
-      <h1 className="text-center font-mono text-xl text-cyan-700 md:rounded-sm md:bg-white/40 md:p-2 md:text-cyan-800">
-        Describe your situation
-      </h1>
-
-      {/* input-area */}
-      <div className="relative flex w-full flex-col gap-3 rounded-md border bg-white focus-within:bg-white/70 md:max-w-4xl md:bg-white/50">
-        <TextareaAutosize
-          className="w-full resize-none p-5 text-base text-cyan-900 outline-none md:bg-transparent"
-          placeholder="E.g He got hit . . ."
-          value={situationText}
-          autoFocus={true}
-          onChange={(e) => updateSituation(e.target.value)}
+    <div
+      className={cn(
+        "absolute top-0 z-20 flex h-full w-full items-center justify-center bg-white p-10",
+        !isProcessing && "hidden",
+      )}
+    >
+      <div className="-mt-28 flex flex-col items-center gap-3 text-xl">
+        <Image
+          src={app_logo}
+          alt="app log"
+          className="h-14 w-14 animate-pulse duration-1000"
         />
-
-        <div className="flex items-center justify-end gap-2 p-2 pb-2 pr-3 text-cyan-800">
-          <ImagePlusIcon className="-mr-1 h-10 w-10 scale-75 cursor-pointer opacity-60" />
-          <SendHorizonal
-            className="h-12 w-12 scale-75 cursor-pointer rounded-full bg-cyan-800 p-2 text-white"
-            onClick={handleSubmit}
-          />
-        </div>
+        <p className="text-center leading-relaxed tracking-wider text-cyan-500">
+          {text}
+        </p>
       </div>
-    </>
+    </div>
   );
 }

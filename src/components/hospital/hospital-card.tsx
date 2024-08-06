@@ -67,23 +67,20 @@ export function OtherDetails({
       <div className={cn("flex items-center gap-2", open && "text-green-500")}>
         <div
           className={cn(
-            "h-3 w-3 rounded-full bg-white",
-            open && "animate-pulse bg-green-500",
+            "h-3 w-3 animate-pulse rounded-full bg-green-500",
+            !open && "bg-white",
           )}
-        />
+        ></div>
         <p className="">{open ? "Open" : "Closed"}</p>
       </div>
       {/* rating */}
-      <div className="flex items-center gap-2">
-        <StarFilled className="text-amber-400" />
-        <p>
-          {rating} ({number_of_rating})
-        </p>
+      <div className="flex items-center gap-2 text-amber-400">
+        <p>Match 80%</p>
       </div>
       {/* distance */}
       <div className="flex items-center gap-2">
         <EnvironmentFilled className="" />
-        <p>{distance} KM</p>
+        <p>{distance} Km</p>
       </div>
     </div>
   );
