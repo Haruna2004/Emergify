@@ -1,0 +1,125 @@
+[
+  {
+    "hospitalId": "hospital001",
+    "hospitalName": "Lagos University Teaching Hospital",
+    "coverImage": "https://firebasestorage.googleapis.com/v0/b/twitterv2-43c82.appspot.com/o/images%2Ffcf78910-e885-4a5a-bcfd-ae0be4c794a7%2Fcharacter_profile.jpg?alt=media&token=ce2ae122-01c9-4117-9de8-4ad56f16a82a",
+    "description": "loading",
+    "contact": {
+      "phone1": "08164475065",
+      "phone2": "08132284899",
+      "emailAddress": "harunafaruk2004@gmail.com"
+    },
+    "address": {
+      "street": "12, Olarenwaju street",
+      "city": "Lagos Mainland",
+      "state": "Lagos",
+      "country": "Nigeria"
+    },
+    "googleMapLink": "https://maps.app.goo.gl/VbENmm4ZiNFbGSqC9",
+    "treatments": [
+      "ACTH Stimulation Tests",
+      "Anaemia",
+      "Infertility and reproductive endocrinology",
+      "PCOD",
+      "Cardiac Arrest",
+      "Heart Attack",
+      "Stroke",
+      "Cognitive Disorders",
+      "Dementia",
+      "Epilepsy Surgery"
+    ],
+    "specialities": [
+      "Anaesthesiology",
+      "Arthroscopy & Sports Medicine",
+      "Bone Marrow Transplant",
+      "Lab Medicine",
+      "Laparoscopic and Bariatric Surgery",
+      "Liver Transplantation and Hepatobiliary Surgery",
+      "Spine Surgery",
+      "Surgical Oncology",
+      "Vascular & Endovascular Surgery"
+    ]
+  },
+  {
+    "hospitalId": "hospital002",
+    "hospitalName": "St. Nicholas Hospital",
+    "coverImage": "https://firebasestorage.googleapis.com/v0/b/twitterv2-43c82.appspot.com/o/images%2Ffcf78910-e885-4a5a-bcfd-ae0be4c794a7%2Fcharacter_profile.jpg?alt=media&token=ce2ae122-01c9-4117-9de8-4ad56f16a82a",
+    "description": "loading",
+    "contact": {
+      "phone1": "08164475065",
+      "phone2": "08132284899",
+      "emailAddress": "harunafaruk2004@gmail.com"
+    },
+    "address": {
+      "street": "12, Olarenwaju street",
+      "city": "Lagos Mainland",
+      "state": "Lagos",
+      "country": "Nigeria"
+    },
+    "googleMapLink": "https://maps.app.goo.gl/VbENmm4ZiNFbGSqC9",
+    "treatments": [
+      "Angiography/ Angioplasty",
+      "Breast Cancer",
+      "Cardiac Arrest",
+      "Colonoscopy",
+      "Diabetes",
+      "Heart Attack",
+      "Joint Replacement",
+      "Kidney Transplant",
+      "Liver Cancer",
+      "Stroke"
+    ],
+    "specialities": [
+      "Cardiology",
+      "Critical Care Medicine",
+      "Dentistry",
+      "Dermatology",
+      "Endocrinology",
+      "Gastroenterology Surgical",
+      "Nephrology",
+      "Neurology",
+      "Radiology"
+    ]
+  },
+  {
+    "hospitalId": "hospital003",
+    "hospitalName": "Reddington Hospital",
+    "coverImage": "https://firebasestorage.googleapis.com/v0/b/twitterv2-43c82.appspot.com/o/images%2Ffcf78910-e885-4a5a-bcfd-ae0be4c794a7%2Fcharacter_profile.jpg?alt=media&token=ce2ae122-01c9-4117-9de8-4ad56f16a82a",
+    "description": "loading",
+    "contact": {
+      "phone1": "08164475065",
+      "phone2": "08132284899",
+      "emailAddress": "harunafaruk2004@gmail.com"
+    },
+    "address": {
+      "street": "12, Olarenwaju street",
+      "city": "Lagos Mainland",
+      "state": "Lagos",
+      "country": "Nigeria"
+    },
+    "googleMapLink": "https://maps.app.goo.gl/VbENmm4ZiNFbGSqC9",
+    "treatments": [
+      "Alzheimer Disease",
+      "Anxiety Disorders",
+      "Arthritis",
+      "Cataract Surgery",
+      "Depression",
+      "Epilepsy Surgery",
+      "Heart Transplant",
+      "Hip Replacement",
+      "Migraine & Headache",
+      "Paediatric Cardiac Surgery"
+    ],
+    "specialities": [
+      "Psychiatry",
+      "Pulmonology",
+      "Radiation Oncology",
+      "Radiology",
+      "Renal Transplant",
+      "Rheumatology",
+      "Spine Surgery",
+      "Urology",
+      "Vascular & Interventional Radiology"
+    ]
+  }
+]
