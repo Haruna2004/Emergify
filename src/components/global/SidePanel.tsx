@@ -17,8 +17,8 @@ import { useRouter } from "next/navigation";
 type Props = {};
 
 const nav_buttons = [
-  { title: "Hospital", value: "hospital" },
   { title: "First Aid", value: "first-aid" },
+  { title: "Hospital", value: "hospital" },
   { title: "Medics", value: "medics" },
 ];
 const nav_links = [

@@ -1,6 +1,7 @@
 import next_logo from "../next.svg";
 import vercel_logo from "../vercel.svg";
 import app_logo from "./app_logo.svg";
+import bg_image from "./bg-image.jpg";
 
 import hospital_1 from "./home/hospital-1.jpg";
 import hospital_2 from "./home/hospital-2.jpg";
@@ -22,4 +23,5 @@ export {
   phone_icon,
   google_map_icon,
   driver_image,
+  bg_image,
 };
