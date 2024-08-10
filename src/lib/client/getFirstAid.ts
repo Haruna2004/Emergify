@@ -13,7 +13,6 @@ export async function getAIFirstAid(messages: Message[], prompt: string) {
     const data = await result.json();
 
     if (!data.success) {
-      alert("Could not get message");
       return "";
     }
 

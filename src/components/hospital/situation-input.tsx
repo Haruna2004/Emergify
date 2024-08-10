@@ -1,5 +1,5 @@
 "use client";
-import { ImagePlusIcon, SendHorizonal } from "lucide-react";
+import { ImagePlusIcon, Mic, SendHorizonal } from "lucide-react";
 import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import cn from "classnames";
@@ -18,6 +18,14 @@ export default function SituationInput({
   headerStyles,
 }: SituationProps) {
   const [imageInput, setImageInput] = useState<any>(null);
+
+  const handleKeyDown = (e: any) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit();
+    }
+  };
+
   return (
     <>
       <h1
@@ -37,14 +45,23 @@ export default function SituationInput({
           value={situationText}
           autoFocus={true}
           onChange={(e) => updateSituation(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
 
         <div className="flex items-center justify-end gap-2 p-2 pb-2 pr-3 text-cyan-800">
-          <ImagePlusIcon className="-mr-1 h-10 w-10 scale-75 cursor-pointer opacity-60" />
-          <SendHorizonal
+          {!situationText ? (
+            <Mic className="h-10 w-10 scale-75 cursor-pointer opacity-60" />
+          ) : (
+            <SendHorizonal
+              className="h-12 w-12 scale-75 cursor-pointer rounded-full bg-cyan-800 p-2 text-white transition-all duration-100"
+              onClick={handleSubmit}
+            />
+          )}
+          {/* <Mic className="-mr-1 h-10 w-10 scale-75 cursor-pointer opacity-60" /> */}
+          {/* <SendHorizonal
             className="h-12 w-12 scale-75 cursor-pointer rounded-full bg-cyan-800 p-2 text-white"
             onClick={handleSubmit}
-          />
+          /> */}
         </div>
       </div>
     </>

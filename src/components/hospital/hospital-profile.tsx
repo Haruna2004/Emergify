@@ -17,7 +17,10 @@ export default function HospitalProfile({}: Props) {
   const router = useRouter();
   const { selectedHospital } = useHospitalList();
 
-  if (!selectedHospital) return <div>loading...</div>;
+  if (!selectedHospital) {
+    router.push("/hospital");
+    return <div>loading...</div>;
+  }
 
   const {
     id,

@@ -1,5 +1,4 @@
 "use client";
-import { ImagePlusIcon, SendHorizonal } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import HospitalMap from "./hospital-map";

@@ -1,8 +1,10 @@
 export const doctor_testData = {
-  name: "Haruna Faruk",
-  description: "Something",
-  imageUrl: "https://image.url.com",
-  speciality: "Robotic Surgery",
+  name: "Dr. Jane Smith",
+  description:
+    "Dr. Jane Smith is a board-certified cardiologist specializing in heart disease, committed to patient care and advanced treatment methods.",
+  imageUrl:
+    "https://firebasestorage.googleapis.com/v0/b/twitterv2-43c82.appspot.com/o/images%2Fdoctor-test.jpg?alt=media&token=a37050a2-c815-42c7-81b6-c76ac8599afe",
+  speciality: "Cardiologist",
   patients: 100,
   experience: 10,
   rating: 4.5,
@@ -14,10 +16,10 @@ export const doctor_testData = {
 export const hospitals_testData = [
   {
     id: "12382y3i28373",
-    name: "Riverside General Hospital",
+    name: "Mainland Hospital",
     imageUrl:
       "https://firebasestorage.googleapis.com/v0/b/twitterv2-43c82.appspot.com/o/images%2Fnational-cancer-institute-1c8sj2IO2I4-unsplash.jpg?alt=media&token=335a1871-e55a-43a1-a4ba-327dd3254dcf",
-    address: "12, Muount View Road",
+    address: "12, Ola Street, Abule Ijesha",
     open: true,
     rating: 4.8,
     distance: 14.8,

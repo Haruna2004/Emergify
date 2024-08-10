@@ -1,11 +1,11 @@
 "use client";
 import { getAIFirstAid } from "@/lib/client/getFirstAid";
-import { ImagePlusIcon, Mic, SendHorizonal, X } from "lucide-react";
-import React, { ChangeEvent, useRef, useState } from "react";
+import { Mic, SendHorizonal, X } from "lucide-react";
+import React, { useState } from "react";
 import { useToast } from "../ui/use-toast";
 import { Message } from "@/lib/types";
 import TextareaAutosize from "react-textarea-autosize";
-import Image from "next/image";
+// import Image from "next/image";
 
 type Props = {
   setMessages: any;
@@ -23,32 +23,40 @@ export default function ChatInput({
   const [textInput, setTextInput] = useState("");
   const [imageInput, setImageInput] = useState<any>();
   const { toast } = useToast();
-  const fileref = useRef(null);
 
-  const changeImage = async (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const maxSize = 5 * 1024 * 1024; // 5MB
-      if (file.size > maxSize) {
-        alert("File is too large (Max Size 5MB)");
-        return;
-      }
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        //@ts-ignore
-        // const base64String = reader.result.split(",")[1];
-        setImageInput(reader.result);
-        // console.log(base64String);
-      };
+  const handleKeyDown = (e: any) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      e.target.form.requestSubmit();
     }
   };
 
-  const removeImage = () => {
-    if (imageInput) {
-      setImageInput(null);
-    }
-  };
+  // const fileref = useRef(null);
+
+  // const changeImage = async (event: ChangeEvent<HTMLInputElement>) => {
+  //   const file = event.target.files?.[0];
+  //   if (file) {
+  //     const maxSize = 5 * 1024 * 1024; // 5MB
+  //     if (file.size > maxSize) {
+  //       alert("File is too large (Max Size 5MB)");
+  //       return;
+  //     }
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(file);
+  //     reader.onload = () => {
+  //       //@ts-ignore
+  //       // const base64String = reader.result.split(",")[1];
+  //       setImageInput(reader.result);
+  //       // console.log(base64String);
+  //     };
+  //   }
+  // };
+
+  // const removeImage = () => {
+  //   if (imageInput) {
+  //     setImageInput(null);
+  //   }
+  // };
 
   async function handleSubmit(e: any) {
     e.preventDefault();
@@ -73,8 +81,6 @@ export default function ChatInput({
 
     // call ai and get response
     const result = await getAIFirstAid(messages, textInput);
-
-    // const result = "Ai is responding";
 
     if (!result) {
       setMessages(oldMessages);
@@ -105,46 +111,18 @@ export default function ChatInput({
         autoFocus={true}
         value={textInput}
         onChange={(e) => setTextInput(e.target.value)}
+        onKeyDown={handleKeyDown}
       />
 
+      <button className="hidden" type="submit"></button>
+
       <div className="flex w-full justify-between">
-        {imageInput ? (
-          <div className="relative h-12 w-12">
-            <Image
-              src={imageInput}
-              alt="image"
-              className="h-full w-full rounded-md"
-              height={0}
-              width={0}
-            />
-            <X
-              className="right absolute right-0 top-0 cursor-pointer text-red-600 opacity-80"
-              onClick={removeImage}
-            />
-          </div>
-        ) : (
-          <div
-            onClick={() => {
-              //@ts-ignore
-              fileref.current.click();
-            }}
-          >
-            <ImagePlusIcon className="h-7 w-7 cursor-pointer text-cyan-800 opacity-80" />
-            <input
-              ref={fileref}
-              type="file"
-              accept="image/*"
-              onChange={changeImage}
-              className="hidden"
-              aria-label="Upload Photo"
-            />
-          </div>
-        )}
+        <p></p>
 
         <div className="flex items-center gap-2 text-cyan-800">
-          <Mic className="h-7 w-7 cursor-pointer" />
-
-          {textInput && (
+          {!textInput ? (
+            <Mic className="h-7 w-7 cursor-pointer" />
+          ) : (
             <button
               disabled={loadingAI}
               type="submit"

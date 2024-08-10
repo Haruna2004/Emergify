@@ -5,6 +5,25 @@ export const sidebar_links = [
   { title: "Contact", link: "/contact" },
 ];
 
+export const SitExamples = [
+  {
+    text: "Car crash on Main Street.",
+    desc: "Witnessed a serious car accident. Two vehicles have collided, and one individual appears injured.",
+    emoji: "🚘",
+  },
+  {
+    text: "A person fainted at the mall.",
+    desc: "My friend suddenly fainted while shopping. She is unconscious and requires urgent medical attention.",
+    emoji: "🛍️",
+  },
+
+  {
+    text: "Severe chest pain.",
+    desc: "My father is experiencing intense chest pain and struggling to breathe.",
+    emoji: "🫀",
+  },
+];
+
 const openingStatements = [
   "Hello, I'm Emergify, here to lend you a calming voice in the storm.",
   "Welcome to voice mode. Remember, in emergencies, staying calm is half the battle won.",

@@ -4,15 +4,58 @@ import SituationInput from "@/components/hospital/situation-input";
 import Image from "next/image";
 import React, { useState } from "react";
 import { app_logo } from "../../../public/assets";
+import { SitExamples } from "@/contants/indext";
+import axios from "axios";
+import { useToast } from "@/components/ui/use-toast";
+import useMedics from "@/lib/store/useMedics";
+import { useRouter } from "next/navigation";
 
 type Props = {};
 
 export default function Page({}: Props) {
   const [situationText, setSituationText] = useState<string>("");
-  const [expText, setExpText] = useState<number | null>(null);
+  const [expText, setExpText] = useState<string | null>(null);
   const [isProcessing, setProcessing] = useState(false);
+  const { toast } = useToast();
+  const { addMedics } = useMedics();
 
-  async function handleSubmit() {}
+  const router = useRouter();
+
+  async function handleSubmit() {
+    try {
+      setProcessing(true);
+
+      // handle processing the request
+      const result = await axios.post("/api/v1/request-medical", {
+        situation: situationText,
+      });
+
+      const { data, status } = result.data;
+
+      if (status !== 200 || !data) {
+        setProcessing(false);
+        return toast({
+          description: "Could not process request. Please try again",
+          duration: 1000,
+          variant: "destructive",
+        });
+      }
+
+      console.log(data);
+      setSituationText("");
+      addMedics(data);
+      router.push(`/medics/profile/${data.id}`);
+      return setProcessing(false);
+    } catch (error) {
+      setProcessing(false);
+      console.log(error);
+      return toast({
+        description: "An error occured. Please try again",
+        duration: 1000,
+        variant: "destructive",
+      });
+    }
+  }
 
   return (
     <div className="relative mx-auto flex h-full max-w-4xl flex-col items-center p-5 pt-10 sm:p-10 md:pt-20">
@@ -32,23 +75,19 @@ export default function Page({}: Props) {
 
       {/* examples */}
       <div className="mt-5 w-full space-y-3">
-        {[0, 1, 3].map((index) => (
-          <div key={index} className="">
+        {SitExamples.map(({ text, desc, emoji }) => (
+          <div key={text} className="">
             <div
               className="flex w-full cursor-pointer items-center justify-start gap-3 rounded-md border p-1 text-cyan-800"
               onClick={() =>
-                setExpText((prev) => (prev === index ? null : index))
+                setExpText((prev) => (prev === text ? null : text))
               }
             >
-              <p className="rounded-md bg-gray-100 p-1">🔍</p>
-              <p>A car incident along the way</p>
+              <p className="rounded-md bg-gray-100 p-1">{emoji}</p>
+              <p>{text}</p>
             </div>
-            {index === expText && (
-              <div className="mt-2 rounded-md border p-2 text-sm">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab
-                repellendus exercitationem animi velit explicabo praesentium
-                facilis reiciendis quas? Eveniet, magnam.
-              </div>
+            {text === expText && (
+              <div className="mt-2 rounded-md border p-2 text-sm">{desc}</div>
             )}
           </div>
         ))}

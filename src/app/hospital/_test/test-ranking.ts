@@ -1,8 +1,7 @@
 interface Hospital {
   id: string;
   specialities: string[];
-  facilities: string[];
-  others: string[];
+  treatments: string[];
 }
 
 // Function to calculate the similarity score
@@ -21,14 +20,13 @@ function calculateSimilarity(
     hospital.specialities,
     patientHospital.specialities,
   );
-  const facilitiesScore = intersection(
-    hospital.facilities,
-    patientHospital.facilities,
+  const treatmentsScore = intersection(
+    hospital.treatments,
+    patientHospital.treatments,
   );
-  const othersScore = intersection(hospital.others, patientHospital.others);
 
   // Weighted sum of the scores
-  return specialitiesScore * 0.5 + facilitiesScore * 0.3 + othersScore * 0.2;
+  return specialitiesScore * 0.6 + treatmentsScore * 0.4;
 }
 
 function rankHospitals(
@@ -49,8 +47,7 @@ function rankHospitals(
 const tC: Hospital = {
   id: "2abc3",
   specialities: ["trauma surgery", "emergency medicine", "orthopedics"],
-  facilities: ["ICU", "emergency room", "operating room"],
-  others: ["stethoscope", "defibrillator", "ventilator"],
+  treatments: ["ICU", "emergency room", "operating room"],
 };
 
 const gH: Hospital = {
@@ -69,7 +66,7 @@ const gH: Hospital = {
     "gastroenterology",
     "endocrinology",
   ],
-  facilities: [
+  treatments: [
     "emergency room",
     "ICU",
     "operating room",
@@ -83,20 +80,6 @@ const gH: Hospital = {
     "dialysis unit",
     "oncology unit",
   ],
-  others: [
-    "stethoscope",
-    "defibrillator",
-    "ventilator",
-    "MRI machine",
-    "CT scanner",
-    "X-ray machine",
-    "ultrasound machine",
-    "electrocardiogram (ECG) machine",
-    "infusion pump",
-    "blood pressure monitor",
-    "surgical instruments",
-    "patient monitoring system",
-  ],
 };
 
 const patientHospital: Hospital = {
@@ -107,31 +90,18 @@ const patientHospital: Hospital = {
     "orthopedics",
     "radiology",
   ],
-  facilities: [
+  treatments: [
     "ICU",
     "emergency room",
     "operating room",
     "radiology department",
     "oncology unit",
   ],
-  others: [
-    "stethoscope",
-    "defibrillator",
-    "ventilator",
-    "MRI",
-    "X-ray machine",
-  ],
 };
 
 const nBH: Hospital[] = [tC, gH];
 
 let promptInput = "He got it by a car and he is bleeding";
-
-// returns an array of id of hospitals i.e [{score: "2.3", id: "1abc"},{score: "1", id: "2abc3"}]
-// function rankHospitals(hospitals: Hospital[]) {
-
-//   return [];
-// }
 
 const rankedHospitals = rankHospitals(nBH, patientHospital);
 console.log(rankedHospitals);
@@ -145,11 +115,4 @@ const hospital3 = {
     "Pain Management",
   ],
   specialties: ["Oncology", "Cardiology", "Neurology"],
-  facilities: [
-    "Emergency Room",
-    "Intensive Care Unit (ICU)",
-    "Operating Room",
-    "Cancer Center",
-    "Radiology Department",
-  ],
 };
