@@ -1,6 +1,6 @@
 "use client";
 
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Image from "next/image";
 import cn from "classnames";
@@ -8,6 +8,8 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import { OtherDetails } from "@/components/hospital/hospital-card";
 import { useHospitalList } from "@/lib/store/useHospital";
 import { google_map_icon, phone_icon } from "../../../public/assets";
+import Link from "next/link";
+import ReadMore from "../global/read-more";
 
 type Props = {};
 
@@ -29,8 +31,10 @@ export default function HospitalProfile({}: Props) {
     address,
     open,
     distance,
-    rating,
-    number_of_rating,
+    description,
+    phone,
+    googleMapsUrl,
+    match,
   } = selectedHospital;
 
   return (
@@ -57,22 +61,21 @@ export default function HospitalProfile({}: Props) {
 
       {/* details */}
       <div className="space-y-1 p-5">
-        <h1 className="text-xl font-semibold tracking-wider">{name}</h1>
-        <p className="text-sm">
-          Provides comprehensive medical services, cutting-edge treatments, and
-          compassionate care, ensuring optimal health and well-being for all
-          patient.
-        </p>
+        <h1 className="text-xl font-semibold tracking-wider text-cyan-800">
+          {name}
+        </h1>
+        <ReadMore
+          className="text-cyan-900"
+          content={
+            description ||
+            "Provides medical services, treatments and care, ensuring optimal health and well-being for patients"
+          }
+        />
       </div>
 
       {/* other-info */}
       <div className="flex w-full items-center justify-center p-2 pr-4">
-        <OtherDetails
-          open={open}
-          distance={distance}
-          rating={rating}
-          number_of_rating={number_of_rating}
-        />
+        <OtherDetails open={open} distance={distance} match={match} />
       </div>
 
       <div className="flex items-center"></div>
@@ -103,30 +106,35 @@ export default function HospitalProfile({}: Props) {
 
         {action === "phone" && (
           <div className="flex w-[90%] flex-col items-center space-y-4 rounded-md border-2 p-3 py-5">
-            <p className="text-cent">
-              Phone: <span className="font-medium">+234 816 4475 065</span>
+            <p className="text-center text-cyan-900">
+              Phone: <span className="font-medium">{phone || "--"}</span>
             </p>
 
-            <button className="w-[50%] rounded-md bg-cyan-700 py-3 text-sm text-white">
+            <Link
+              href={`tel:${phone || "+234"}`}
+              className="w-[50%] rounded-md bg-cyan-700 py-3 text-center text-sm text-white"
+            >
               Call Hospital
-            </button>
+            </Link>
           </div>
         )}
 
         {action === "address" && (
           <div className="flex w-[90%] flex-col items-center space-y-4 rounded-md border-2 p-3 py-5">
-            <p className="text-cent">
+            <p className="text-center text-cyan-900">
               Address: <span className="font-medium">{address}</span>
             </p>
 
-            <button className="w-[50%] rounded-md bg-cyan-700 py-3 text-sm text-white">
+            <Link
+              href={`${googleMapsUrl || "#"}`}
+              target="_blank"
+              className="w-[50%] rounded-md bg-cyan-700 py-3 text-center text-sm text-white"
+            >
               Open in Google Maps
-            </button>
+            </Link>
           </div>
         )}
       </div>
-
-      {/* Reviews */}
     </div>
   );
 }

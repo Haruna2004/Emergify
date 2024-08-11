@@ -9,6 +9,7 @@ import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import useMedics from "@/lib/store/useMedics";
 import { useRouter } from "next/navigation";
+import { sleep } from "@/lib/utils";
 
 type Props = {};
 
@@ -41,6 +42,8 @@ export default function Page({}: Props) {
         });
       }
 
+      await sleep(4000);
+
       console.log(data);
       setSituationText("");
       addMedics(data);
@@ -61,7 +64,7 @@ export default function Page({}: Props) {
     <div className="relative mx-auto flex h-full max-w-4xl flex-col items-center p-5 pt-10 sm:p-10 md:pt-20">
       <RequestLoading
         isProcessing={isProcessing}
-        text="Please Hold on. Emergify is locating the best hospital around you."
+        text="Please Hold on. Emergify is getting a medical proffesinal to help."
       />
 
       <div className="w-full space-y-5">

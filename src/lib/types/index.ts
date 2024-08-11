@@ -9,12 +9,13 @@ export type HospitalType = {
   id: string;
   name: string;
   imageUrl: string;
+  description: string;
+  phone: string;
+  googleMapsUrl: string;
   address: string;
   open: boolean;
-  rating: number;
   distance: number;
-  score: number;
-  number_of_rating: number;
+  match: number;
 };
 
 export type RegHospitalState = {

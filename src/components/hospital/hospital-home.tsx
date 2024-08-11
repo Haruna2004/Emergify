@@ -50,7 +50,7 @@ export default function HospitalHome({}: Props) {
         });
       }
 
-      // await sleep(3000);
+      await sleep(3000);
 
       // request was successfull
       updateHospitalsList(data);

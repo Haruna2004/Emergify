@@ -112,7 +112,7 @@ export default function MedicProfile({}: Props) {
 
 function FiguresCard({ value, title }: { value: string; title: string }) {
   return (
-    <div className="flex w-full flex-col items-center justify-around gap-1 rounded-md border p-3">
+    <div className="flex w-full flex-col items-center justify-around gap-1 rounded-md border border-cyan-400 p-3">
       <p>{title}</p>
       <p className="text-xl font-medium"> {value}</p>
     </div>

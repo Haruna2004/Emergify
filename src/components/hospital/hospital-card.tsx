@@ -14,16 +14,7 @@ type Props = {
 export default function HospitalCard({ hospitalInfo }: Props) {
   const { selectHospital } = useHospitalList();
   const router = useRouter();
-  const {
-    id,
-    imageUrl,
-    name,
-    address,
-    open,
-    distance,
-    rating,
-    number_of_rating,
-  } = hospitalInfo;
+  const { id, imageUrl, name, address, open, distance, match } = hospitalInfo;
   return (
     <div
       onClick={() => {
@@ -43,23 +34,13 @@ export default function HospitalCard({ hospitalInfo }: Props) {
         <h1 className="font-semibold">{name}</h1>
         <p className="text-sm">{address}</p>
         {/* others */}
-        <OtherDetails
-          open={open}
-          distance={distance}
-          rating={rating}
-          number_of_rating={number_of_rating}
-        />
+        <OtherDetails open={open} distance={distance} match={match} />
       </div>
     </div>
   );
 }
 
-export function OtherDetails({
-  open,
-  distance,
-  rating,
-  number_of_rating,
-}: any) {
+export function OtherDetails({ open, distance, match }: any) {
   let greenColor = "text-green-500 bg-green-500";
   return (
     <div className="mt-1 flex w-full justify-around">
@@ -75,10 +56,11 @@ export function OtherDetails({
       </div>
       {/* rating */}
       <div className="flex items-center gap-2 text-amber-400">
-        <p>Match 80%</p>
+        {/* TODO: Make dynamic */}
+        <p>Match {match || "--"}</p>
       </div>
       {/* distance */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 text-cyan-800">
         <EnvironmentFilled className="" />
         <p>{distance} Km</p>
       </div>

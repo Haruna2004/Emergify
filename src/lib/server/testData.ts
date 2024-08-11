@@ -29,10 +29,10 @@ export const hospitals_testData = [
   },
   {
     id: "12382y3i28372",
-    name: "Center Cancer Institute",
+    name: "Center of Health Institute",
     imageUrl:
       "https://firebasestorage.googleapis.com/v0/b/twitterv2-43c82.appspot.com/o/images%2Fsolen-feyissa-jGmBZypoFPc-unsplash.jpg?alt=media&token=a02cd562-39b0-4bf1-a85a-be0ef840b284",
-    address: "12, Muount View Road",
+    address: "12, University Road, Lagos Mainland",
     open: false,
     rating: 4.8,
     distance: 13,

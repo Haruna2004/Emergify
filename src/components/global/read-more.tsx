@@ -5,13 +5,14 @@ import cn from "classnames";
 
 type Props = {
   content: string;
+  className?: string;
 };
 
-export default function ReadMore({ content }: Props) {
+export default function ReadMore({ content, className }: Props) {
   const [isReadMore, setIsReadMore] = useState(true);
   const textLength = content.length;
   return (
-    <p className="">
+    <p className={cn("", className)}>
       {isReadMore ? content.slice(0, 100) : content}
       <span
         className={cn(
