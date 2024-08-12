@@ -1,7 +1,7 @@
-export const doctor_testData = {
-  name: "Dr. Jane Smith",
+export const doctor_Data = {
+  name: "Dr. William Ried",
   description:
-    "Dr. Jane Smith is a board-certified cardiologist specializing in heart disease, committed to patient care and advanced treatment methods.",
+    "Dr. William is a board-certified cardiologist specializing in heart disease, committed to patient care and advanced treatment methods.",
   imageUrl:
     "https://firebasestorage.googleapis.com/v0/b/twitterv2-43c82.appspot.com/o/images%2Fdoctor-test.jpg?alt=media&token=a37050a2-c815-42c7-81b6-c76ac8599afe",
   speciality: "Cardiologist",

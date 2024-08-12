@@ -1,6 +1,6 @@
 export const runtime = "edge";
 
-import { doctor_testData } from "@/lib/server/testData";
+import { doctor_Data } from "@/lib/server/testData";
 
 export async function POST(request: Request) {
   try {
@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     return Response.json({
       status: 200,
       message: "Request Successful",
-      data: doctor_testData,
+      data: doctor_Data,
     });
   } catch (error) {
     console.log("Server Error:", error);
