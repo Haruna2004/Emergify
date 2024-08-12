@@ -47,7 +47,7 @@ export default function Page({}: Props) {
       console.log(data);
       setSituationText("");
       addMedics(data);
-      router.push(`/medics/profile/${data.id}`);
+      router.push(`/medics/profile`);
       return setProcessing(false);
     } catch (error) {
       setProcessing(false);
