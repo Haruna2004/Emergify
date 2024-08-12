@@ -1,7 +1,6 @@
-export const runtime = "edge";
+import MedicsProfile from "@/components/hospital/medics-profile";
 
-import React from "react";
-import MedicsProfile from "../medics-profile";
+export const runtime = "edge";
 
 type Props = {};
 
