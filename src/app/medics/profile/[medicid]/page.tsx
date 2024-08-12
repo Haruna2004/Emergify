@@ -1,12 +1,13 @@
 "use client";
 
+export const runtime = "edge";
+
 import ReadMore from "@/components/global/read-more";
 import useMedics from "@/lib/store/useMedics";
 import { MessageCircleMore, PhoneCall, Video } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-// import { doctor_testData } from "@/lib/server/testData";
 import React from "react";
 import { bg_image } from "../../../../../public/assets";
 
