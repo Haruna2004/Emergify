@@ -6,7 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { bg_image } from "../../../../public/assets";
+import { bg_image } from "../../../public/assets";
 
 type Props = {};
 
