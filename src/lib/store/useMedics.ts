@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { doctor_testData } from "../server/testData";
 
 type MedicType = {
   name: string;
