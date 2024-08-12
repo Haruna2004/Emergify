@@ -61,7 +61,7 @@ export default function MedicProfile({}: Props) {
           )}
         </div>
         {/* contact buttons */}
-        <div className="flex flex-1 items-start justify-between gap-3 pl-5">
+        <div className="flex flex-1 items-start justify-between gap-3 pl-5 sm:justify-start sm:gap-5">
           <Link
             href={`https://api.whatsapp.com/send`}
             target="_blank"
@@ -85,26 +85,29 @@ export default function MedicProfile({}: Props) {
       </div>
 
       {/* name - desp */}
-      <div className="mt-5 flex flex-col gap-1 px-5">
+      <div className="mt-5 flex flex-col gap-1 px-5 text-cyan-900">
         <h3 className="text-xl font-semibold">{name}</h3>
         <h3 className="font-medium">{speciality}</h3>
       </div>
 
       {/* experice */}
-      <div className="mt-[4vh] flex w-full items-center justify-between gap-3 px-5">
+      <div className="mt-[4vh] flex w-full items-center justify-between gap-3 px-5 text-cyan-900">
         <FiguresCard value={patients} title="Patients" />
         <FiguresCard value={experience} title="Experience" />
         <FiguresCard value={rating} title="Rating" />
       </div>
       {/* about */}
       <div className="mt-[4vh] w-full px-5">
-        <ReadMore content={description} />
+        <ReadMore content={description} className="text-cyan-900" />
       </div>
       {/* End sesssion */}
       <div className="mt-[7vh] flex w-full items-start justify-center px-5">
-        <button className="rounded-md bg-rose-700 p-2 px-5 text-white">
+        <Link
+          href={`/medics`}
+          className="rounded-md bg-rose-700 p-2 px-5 text-center text-white"
+        >
           End Session
-        </button>
+        </Link>
       </div>
     </div>
   );
@@ -113,8 +116,8 @@ export default function MedicProfile({}: Props) {
 function FiguresCard({ value, title }: { value: string; title: string }) {
   return (
     <div className="flex w-full flex-col items-center justify-around gap-1 rounded-md border border-cyan-400 p-3">
-      <p>{title}</p>
-      <p className="text-xl font-medium"> {value}</p>
+      <p className="text-xl font-medium text-cyan-700"> {value}</p>
+      <p className="text-cyan-900">{title}</p>
     </div>
   );
 }

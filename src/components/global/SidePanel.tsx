@@ -12,7 +12,6 @@ import Image from "next/image";
 import { useVoiceContext } from "@/lib/client/contexts/voice-context";
 import { AudioMutedOutlined, AudioOutlined } from "@ant-design/icons";
 import cn from "classnames";
-import { useRouter } from "next/navigation";
 import { useTextToSpeech } from "@/lib/client/voice-assist/use-speech";
 import { sleep } from "@/lib/utils";
 import { openingStatement } from "@/contants/indext";
@@ -26,9 +25,8 @@ const nav_buttons = [
 ];
 const nav_links = [
   { title: "Register", value: "register" },
-  { title: "About us", value: "about-us" },
-  { title: "Donation", value: "donate" },
-  { title: "Contact us", value: "contact-us" },
+  { title: "About us", value: "about" },
+  { title: "Contact us", value: "contact" },
 ];
 
 export default function SidePanel({}: Props) {
