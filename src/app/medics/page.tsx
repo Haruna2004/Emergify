@@ -64,7 +64,7 @@ export default function Page({}: Props) {
     <div className="relative mx-auto flex h-full max-w-4xl flex-col items-center p-5 pt-10 sm:p-10 md:pt-20">
       <RequestLoading
         isProcessing={isProcessing}
-        text="Please Hold on. Emergify is getting a medical proffesinal to help."
+        text="Please Hold on. Emergify is getting a medical proffesional to help."
       />
 
       <div className="w-full space-y-5">
