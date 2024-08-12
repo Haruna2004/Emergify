@@ -34,7 +34,17 @@ export async function getAiChatResponse(
 
 // Single content generation
 
-export async function getAiResponse(prompt: string, systemPrompt?: string) {
+interface AiOptionalParams {
+  systemPrompt?: string;
+  responseMimeType?: string;
+}
+
+export async function getAiResponse(
+  prompt: string,
+  { systemPrompt, responseMimeType }: AiOptionalParams,
+) {
+  if (responseMimeType) generationConfig.responseMimeType = responseMimeType;
+
   const model = genAI.getGenerativeModel({
     model: GEMINI_MODEL,
     systemInstruction: systemPrompt,

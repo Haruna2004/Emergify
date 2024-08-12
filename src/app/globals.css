@@ -71,3 +71,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+.btn_ripple {
+  animation-name: ripple;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(103, 232, 249, 0.4),
+      0 0 0 0 rgba(103, 232, 249, 0.4);
+  }
+
+  80% {
+    box-shadow:
+      0 0 0 10px rgba(103, 232, 249, 0),
+      0 0 0 20px rgba(103, 232, 249, 0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(103, 232, 249, 0),
+      0 0 0 0 rgba(103, 232, 249, 0);
+  }
+}

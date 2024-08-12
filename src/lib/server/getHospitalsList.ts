@@ -2,25 +2,20 @@ import { hospitals_testData } from "@/lib/server/testData";
 import { getAiResponse } from "./aiResponse";
 import {
   fetchHospitals,
+  generatePatientObject,
   getCordsAddress,
-  getPatientTSObject,
   rankHospitals,
 } from "./hospital";
+import { hospitalSysPrompt, userSituation } from "@/contants/ai";
 
 export async function getHospitals(sitaution: string, location: string[]) {
-  //   const aiTextResonse = await getAiResponse(sitaution);
+  // const patientTS = await generatePatientObject(sitaution);
 
-  const aiTextResonse = "";
+  // const fetchedHospitals = fetchHospitals(location);
 
-  // structre the patient treatment and specialities object
-  const patientTS = await getPatientTSObject(aiTextResonse);
+  return hospitals_testData;
 
-  // given the longitude and latitude return the reverse geocoded address
-  const patientAddress = await getCordsAddress(location);
-
-  const fetchedHospitals = fetchHospitals(patientAddress);
-
-  const rankedHospitals = rankHospitals(patientTS, fetchedHospitals);
+  // const rankedHospitals = rankHospitals(patientTS, fetchedHospitals);
 
   return hospitals_testData;
   //   return rankedHospitals;

@@ -15,7 +15,6 @@ type Props = {};
 const selections = [
   { title: "Medical Professional", link: "practitioner" },
   { title: "Medical Hospital", link: "hospital" },
-  { title: "Donation", link: "donate" },
 ];
 
 export default function RegisterHome({}: Props) {

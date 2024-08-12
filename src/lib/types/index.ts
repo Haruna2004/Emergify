@@ -39,3 +39,8 @@ export type RegHospitalState = {
   changeValue: (name: string, value: string | string[] | {} | null) => void;
   resetAllValue: () => void;
 };
+
+export type PatientType = {
+  specialities: string[];
+  treatments: string[];
+};

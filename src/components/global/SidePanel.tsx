@@ -13,6 +13,9 @@ import { useVoiceContext } from "@/lib/client/contexts/voice-context";
 import { AudioMutedOutlined, AudioOutlined } from "@ant-design/icons";
 import cn from "classnames";
 import { useRouter } from "next/navigation";
+import { useTextToSpeech } from "@/lib/client/voice-assist/use-speech";
+import { sleep } from "@/lib/utils";
+import { openingStatement } from "@/contants/indext";
 
 type Props = {};
 
@@ -29,18 +32,23 @@ const nav_links = [
 ];
 
 export default function SidePanel({}: Props) {
+  const [speechText, setSpeechText] = useState<string>("");
+  const { playText, speechStatus, stopText } = useTextToSpeech(speechText);
+
   const { startPorcupine, stopPorcupine, isPorcupineListening } =
     useVoiceContext();
 
-  const router = useRouter();
-
-  function turnOnVoiceMode() {
+  async function turnOnVoiceMode() {
     if (isPorcupineListening) {
       stopPorcupine();
       console.log("Stopped listeing");
+      if (speechStatus) stopText();
       return;
     }
     startPorcupine();
+    setSpeechText(openingStatement());
+    await sleep(100);
+    playText();
   }
   return (
     <div className="hidden flex-col bg-stone-100 p-5 shadow-md md:flex md:flex-[0.25] lg:flex-[0.15]">

@@ -46,6 +46,8 @@ export default function Header({}: Props) {
         Emergify
       </Link>
 
+      {/* <div className="btn_ripple"></div> */}
+
       <div className="flex items-center gap-5">
         <TooltipProvider>
           <Tooltip>
@@ -55,7 +57,7 @@ export default function Header({}: Props) {
                 onClick={turnOnVoiceMode}
                 className={cn(
                   isPorcupineListening &&
-                    "animate-pulse bg-cyan-700 text-white",
+                    "btn_ripple animate-pulse bg-cyan-700 text-white",
                   "flex cursor-pointer flex-col items-center rounded-full p-1.5",
                 )}
               >
