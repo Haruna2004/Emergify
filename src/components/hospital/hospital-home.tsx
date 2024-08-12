@@ -10,6 +10,7 @@ import { app_logo } from "../../../public/assets";
 import cn from "classnames";
 import { sleep } from "@/lib/utils";
 import SituationInput from "./situation-input";
+import { fetchHospitals } from "@/lib/firebase/firestore/hospitalFirestore";
 
 type Props = {};
 
@@ -33,10 +34,12 @@ export default function HospitalHome({}: Props) {
 
       setProcessing(true);
 
+      const fetchedHospitals = await fetchHospitals();
+
       // handle processing the request
       const result = await axios.post("/api/v1/locate-hospital", {
         situation: situationText,
-        location: mapLocation,
+        hospitals: fetchedHospitals,
       });
 
       const { data, status, message } = result.data;
@@ -49,8 +52,6 @@ export default function HospitalHome({}: Props) {
           variant: "destructive",
         });
       }
-
-      await sleep(3000);
 
       // request was successfull
       updateHospitalsList(data);

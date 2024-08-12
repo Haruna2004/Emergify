@@ -3,19 +3,19 @@ import { getHospitals } from "@/lib/server/getHospitalsList";
 
 export async function POST(request: Request) {
   try {
-    const { situation, location } = await request.json();
-    console.log(situation, location);
+    const { situation, hospitals } = await request.json();
+    // console.log(situation, hospitals);
 
-    if (!situation || !location) {
+    if (!situation || !hospitals) {
       return Response.json({
         status: 400,
         message:
-          "Request Unsuccessful: 'situation' | 'location'  is Undefined  in request body.  ",
+          "Request Unsuccessful: 'situation' | 'hospitals'  is Undefined  in request body.  ",
       });
     }
 
     // call function to process the request
-    const hospital_list = await getHospitals(situation, location);
+    const hospital_list = await getHospitals(situation, hospitals);
 
     if (hospital_list) {
       return Response.json({

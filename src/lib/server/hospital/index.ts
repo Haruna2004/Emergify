@@ -3,22 +3,43 @@ import { getAiResponse } from "../aiResponse";
 import { PatientType } from "@/lib/types";
 import { isPatientType } from "@/lib/utils";
 
-// helper functions for processing hospital functions on the server
-const DEFAULT_ADDRESS = {
-  city: "Lagos Mainland",
-  state: "Lagos",
-  country: "Nigeria",
-};
+const SPECIALITIES_WEIGHT = 0.4;
+const TREATMENT_WEIGHT = 0.6;
 
-export async function getCordsAddress(cordinates: string[]) {
-  return DEFAULT_ADDRESS;
+function calculateSimilarity(
+  hospital: Hospital,
+  patientHospital: Hospital,
+): number {
+  function intersection(arr1: string[], arr2: string[]): number {
+    // return arr1.filter((item) => arr2.includes(item)).length;
+    const intersection = arr1.filter((item) => arr2.includes(item)).length;
+    const union = new Set([...arr1, ...arr2]).size;
+    return intersection / union;
+  }
+
+  const specialitiesScore = intersection(
+    hospital.specialities,
+    patientHospital.specialities,
+  );
+  const treatmentsScore = intersection(
+    hospital.treatments,
+    patientHospital.treatments,
+  );
+
+  // Weighted sum of the scores
+  return (
+    specialitiesScore * SPECIALITIES_WEIGHT + treatmentsScore * TREATMENT_WEIGHT
+  );
 }
 
-// Fetch an arry of hospitals from firebase
-export async function fetchHospitals(address: any) {}
-
 export async function rankHospitals(patient: any, hospitals: any) {
-  return "List of ranked hospitals";
+  "List of ranked hospitals";
+  return hospitals
+    .map((hospital: any) => ({
+      score: calculateSimilarity(hospital, patient),
+      ...hospital,
+    }))
+    .sort((a: any, b: any) => b.score - a.score);
 }
 
 export async function generatePatientObject(
@@ -28,7 +49,7 @@ export async function generatePatientObject(
   try {
     // second retry
     if (maxRetries <= 0) {
-      const aiTextResonse = await getAiResponse(situation, {
+      const aiTextResonse = await getAiResponse(userSituation(situation), {
         systemPrompt: hospitalSysPrompt,
         responseMimeType: "application/json",
       });
@@ -37,7 +58,7 @@ export async function generatePatientObject(
       return isPatientType(validData) ? validData : null;
     }
 
-    const aiTextResonse = await getAiResponse(situation, {
+    const aiTextResonse = await getAiResponse(userSituation(situation), {
       systemPrompt: hospitalSysPrompt,
       responseMimeType: "application/json",
     });
@@ -47,7 +68,7 @@ export async function generatePatientObject(
     if (isPatient) return validData;
 
     const result: PatientType | null = await generatePatientObject(
-      situation,
+      userSituation(situation),
       0,
     );
 
