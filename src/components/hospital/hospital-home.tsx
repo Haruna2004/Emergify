@@ -59,6 +59,13 @@ export default function HospitalHome({}: Props) {
       router.push("/hospital/list-all");
       return setProcessing(false);
     } catch (error) {
+      setProcessing(false);
+
+      return toast({
+        description: "Failed to Locate Hospitals. Try again",
+        duration: 1000,
+        variant: "destructive",
+      });
       console.log(error);
     }
   };
