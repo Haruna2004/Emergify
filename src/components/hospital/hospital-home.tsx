@@ -59,6 +59,7 @@ export default function HospitalHome({}: Props) {
       router.push("/hospital/list-all");
       return setProcessing(false);
     } catch (error) {
+      console.log(error);
       setProcessing(false);
 
       return toast({
@@ -66,7 +67,6 @@ export default function HospitalHome({}: Props) {
         duration: 1000,
         variant: "destructive",
       });
-      console.log(error);
     }
   };
   return (
