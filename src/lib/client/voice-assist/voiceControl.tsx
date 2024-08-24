@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useRhino } from "@picovoice/rhino-react";
 import cn from "classnames";
 import { Mic } from "lucide-react";
@@ -18,13 +18,27 @@ export default function VoiceControl({}: Props) {
     release: rhinoRelease,
   } = useRhino();
 
-  const rhinoContext = {
-    publicPath: "/picovoice/intents/v1/Emergify_en_wasm_v3_0_0.rhn",
-  };
+  // const rhinoContext = {
+  //   publicPath: "/picovoice/intents/v1/Emergify_en_wasm_v3_0_0.rhn",
+  // };
 
-  const rhinoModel = {
-    publicPath: "/picovoice/intents/rhino_params.pv",
-  };
+  // const rhinoModel = {
+  //   publicPath: "/picovoice/intents/rhino_params.pv",
+  // };
+
+  const rhinoContext = useMemo(
+    () => ({
+      publicPath: "/picovoice/intents/v1/Emergify_en_wasm_v3_0_0.rhn",
+    }),
+    [],
+  );
+
+  const rhinoModel = useMemo(
+    () => ({
+      publicPath: "/picovoice/intents/rhino_params.pv",
+    }),
+    [],
+  );
 
   useEffect(() => {
     init(
@@ -39,7 +53,7 @@ export default function VoiceControl({}: Props) {
     //     rhinoRelease();
     //   }
     // };
-  }, [init]);
+  }, [init, rhinoContext, rhinoModel]);
 
   useEffect(() => {
     if (inference !== null) {
