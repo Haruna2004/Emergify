@@ -26,7 +26,6 @@ const nav_buttons = [
 const nav_links = [
   { title: "Register", value: "register" },
   { title: "About us", value: "about" },
-  { title: "Contact us", value: "contact" },
 ];
 
 export default function SidePanel({}: Props) {
