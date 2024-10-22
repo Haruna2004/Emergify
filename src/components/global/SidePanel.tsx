@@ -15,6 +15,7 @@ import cn from "classnames";
 import { useTextToSpeech } from "@/lib/client/voice-assist/use-speech";
 import { sleep } from "@/lib/utils";
 import { openingStatement } from "@/contants/indext";
+import { useToast } from "../ui/use-toast";
 
 type Props = {};
 
@@ -31,6 +32,7 @@ const nav_links = [
 export default function SidePanel({}: Props) {
   const [speechText, setSpeechText] = useState<string>("");
   const { playText, speechStatus, stopText } = useTextToSpeech(speechText);
+  const { toast } = useToast();
 
   const { startPorcupine, stopPorcupine, isPorcupineListening } =
     useVoiceContext();
@@ -43,6 +45,11 @@ export default function SidePanel({}: Props) {
       return;
     }
     startPorcupine();
+    toast({
+      title: "Could Not Start Speech To Intent Engine",
+      description:
+        "Maximum number of active sessions exceeded (3/3) for Project Emergify. Upgrade to the Developer Plan for 100 active sessions.",
+    });
     setSpeechText(openingStatement());
     await sleep(100);
     playText();
