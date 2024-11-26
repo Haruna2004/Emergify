@@ -35,10 +35,10 @@ const CTA = () => {
             local neighborhood watches to global disaster response teams.
           </p>
           <a
-            href="/first-aid"
+            href="/register"
             className="bg-fbprimary-700 hover:bg-fbprimary-800 focus:ring-fbprimary-300 dark:focus:ring-fbprimary-900 inline-flex items-center rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white focus:ring-4"
           >
-            Register Medics
+            Register as Medics
             <Stethoscope className="-mr-1 ml-2 h-5 w-5" />
           </a>
         </div>
