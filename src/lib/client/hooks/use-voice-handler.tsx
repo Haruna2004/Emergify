@@ -14,23 +14,26 @@ export default function useVoiceHandler() {
   const router = useRouter();
 
   // handle routing to page
-  const NavigateToPage = useCallback(async (slots: any) => {
-    const pages = {
-      "first aid": "first-aid",
-      hospital: "hospital",
-      "medical responder": "responder",
-      donation: "donation",
-    };
+  const NavigateToPage = useCallback(
+    async (slots: any) => {
+      const pages = {
+        "first aid": "first-aid",
+        hospital: "hospital",
+        "medical responder": "responder",
+        donation: "donation",
+      };
 
-    //@ts-ignore
-    const pageLink = pages[slots?.page_value];
-    if (!pageLink) {
-      console.log("Page is not available");
-      return;
-    }
+      //@ts-ignore
+      const pageLink = pages[slots?.page_value];
+      if (!pageLink) {
+        console.log("Page is not available");
+        return;
+      }
 
-    router.push(`/${pageLink}`);
-  }, []);
+      router.push(`/${pageLink}`);
+    },
+    [router],
+  );
 
   const handleIntentRequest = useCallback(
     async (inference: Inference) => {

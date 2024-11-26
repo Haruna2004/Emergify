@@ -7,15 +7,27 @@ export type Message = {
 
 export type HospitalType = {
   id: string;
-  name: string;
-  imageUrl: string;
+  hospitalName: string;
   description: string;
-  phone: string;
-  googleMapsUrl: string;
-  address: string;
-  open: boolean;
+  coverImage: string;
+  address: {
+    street: string;
+    city: string;
+    state: string;
+    country: string;
+  };
+  contact: {
+    phone2: string;
+    phone1: string;
+    emailAddress: string;
+  };
+  googleMapLink: string;
+  treatments: string[];
+  specialities: string[];
+  score: number;
+  // undetermined
   distance: number;
-  match: number;
+  open: boolean;
 };
 
 export type RegHospitalState = {

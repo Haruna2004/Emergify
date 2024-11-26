@@ -1,4 +1,8 @@
-import { hospital_1, hospital_2, hospital_3 } from "../../../../public/assets";
+import {
+  hospital_1,
+  hospital_2,
+  hospital_3,
+} from "../../../../../public/assets";
 
 export const hostpital_list = [
   {

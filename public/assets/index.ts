@@ -12,6 +12,8 @@ import driver_image from "./home/driver-image.jpeg";
 
 import phone_icon from "./home/phone_icon.svg";
 import google_map_icon from "./home/google_map_icon.svg";
+import emergify_logo from "./emergify-logo.jpg";
+import emergify_mockup from "./emergify-mockup.png";
 
 export {
   next_logo,
@@ -24,4 +26,6 @@ export {
   google_map_icon,
   driver_image,
   bg_image,
+  emergify_logo,
+  emergify_mockup,
 };

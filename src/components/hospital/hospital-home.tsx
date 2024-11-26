@@ -67,6 +67,13 @@ export default function HospitalHome({}: Props) {
         variant: "destructive",
       });
       console.log(error);
+      setProcessing(false);
+
+      return toast({
+        description: "Failed to Locate Hospitals. Try again",
+        duration: 1000,
+        variant: "destructive",
+      });
     }
   };
   return (
