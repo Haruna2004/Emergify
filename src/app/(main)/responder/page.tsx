@@ -2,7 +2,7 @@
 import Map from "@/components/driver/base-map";
 import Image from "next/image";
 import React from "react";
-import { driver_image } from "../../../public/assets";
+import { driver_image } from "../../../../public/assets";
 import MapboxExample from "@/components/driver/search-map";
 
 type Props = {};
