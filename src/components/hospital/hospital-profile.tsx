@@ -13,6 +13,11 @@ import ReadMore from "../global/read-more";
 
 type Props = {};
 
+export function getAddress(address: any) {
+  const { city, state, street, country } = address;
+  return `${street}, ${city}, ${state}.`;
+}
+
 export default function HospitalProfile({}: Props) {
   // const { hospitalId } = useParams();
   const [action, setAction] = useState("address");
@@ -26,15 +31,15 @@ export default function HospitalProfile({}: Props) {
 
   const {
     id,
-    imageUrl,
-    name,
+    coverImage,
+    hospitalName,
     address,
     open,
     distance,
     description,
-    phone,
-    googleMapsUrl,
-    match,
+    contact: { phone1, phone2, emailAddress },
+    googleMapLink,
+    score,
   } = selectedHospital;
 
   return (
@@ -51,7 +56,7 @@ export default function HospitalProfile({}: Props) {
 
       <div className="h-52 w-full">
         <Image
-          src={imageUrl}
+          src={coverImage}
           width={100}
           height={100}
           alt="image"
@@ -62,7 +67,7 @@ export default function HospitalProfile({}: Props) {
       {/* details */}
       <div className="space-y-1 p-5">
         <h1 className="text-xl font-semibold tracking-wider text-cyan-800">
-          {name}
+          {hospitalName}
         </h1>
         <ReadMore
           className="text-cyan-900"
@@ -75,7 +80,7 @@ export default function HospitalProfile({}: Props) {
 
       {/* other-info */}
       <div className="flex w-full items-center justify-center p-2 pr-4">
-        <OtherDetails open={open} distance={distance} match={match} />
+        <OtherDetails open={open} distance={distance} match={score} />
       </div>
 
       <div className="flex items-center"></div>
@@ -107,11 +112,12 @@ export default function HospitalProfile({}: Props) {
         {action === "phone" && (
           <div className="flex w-[90%] flex-col items-center space-y-4 rounded-md border-2 p-3 py-5">
             <p className="text-center text-cyan-900">
-              Phone: <span className="font-medium">{phone || "--"}</span>
+              Phone:{" "}
+              <span className="font-medium">{phone1 || phone2 || "--"}</span>
             </p>
 
             <Link
-              href={`tel:${phone || "+234"}`}
+              href={`tel:${phone1 || "+234"}`}
               className="w-[50%] rounded-md bg-cyan-700 py-3 text-center text-sm text-white"
             >
               Call Hospital
@@ -122,11 +128,12 @@ export default function HospitalProfile({}: Props) {
         {action === "address" && (
           <div className="flex w-[90%] flex-col items-center space-y-4 rounded-md border-2 p-3 py-5">
             <p className="text-center text-cyan-900">
-              Address: <span className="font-medium">{address}</span>
+              Address:{" "}
+              <span className="font-medium">{getAddress(address)}</span>
             </p>
 
             <Link
-              href={`${googleMapsUrl || "#"}`}
+              href={`${googleMapLink || "#"}`}
               target="_blank"
               className="w-[50%] rounded-md bg-cyan-700 py-3 text-center text-sm text-white"
             >

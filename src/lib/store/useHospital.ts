@@ -43,12 +43,14 @@ export const useHospitalList = create<HospitalListType>((set, get) => ({
   locatedHospitals: null,
   selectedHospital: null,
   updateHospitalsList: (hospitals) => {
+    console.log("hospitals", hospitals);
     set({
       locatedHospitals: hospitals,
       selectedHospital: null,
     });
   },
   selectHospital: (hospital) => {
+    console.log("hospital", hospital);
     set({
       selectedHospital: hospital,
     });

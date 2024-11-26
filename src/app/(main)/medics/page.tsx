@@ -3,7 +3,7 @@ import cn from "classnames";
 import SituationInput from "@/components/hospital/situation-input";
 import Image from "next/image";
 import React, { useState } from "react";
-import { app_logo } from "../../../public/assets";
+import { app_logo } from "../../../../public/assets";
 import { SitExamples } from "@/contants/indext";
 import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";

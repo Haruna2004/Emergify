@@ -6,6 +6,7 @@ import { EnvironmentFilled, StarFilled } from "@ant-design/icons";
 import { useRouter } from "next/navigation";
 import { HospitalType } from "@/lib/types";
 import { useHospitalList } from "@/lib/store/useHospital";
+import { getAddress } from "./hospital-profile";
 
 type Props = {
   hospitalInfo: HospitalType;
@@ -14,27 +15,28 @@ type Props = {
 export default function HospitalCard({ hospitalInfo }: Props) {
   const { selectHospital } = useHospitalList();
   const router = useRouter();
-  const { id, imageUrl, name, address, open, distance, match } = hospitalInfo;
+  const { id, coverImage, hospitalName, address, open, distance, score } =
+    hospitalInfo;
   return (
     <div
       onClick={() => {
         selectHospital(hospitalInfo);
-        router.push(`/hospital/profile/${id}`);
+        router.push(`/hospital/profile`);
       }}
       className="relative flex h-48 w-full cursor-pointer items-center gap-3 rounded-md border"
     >
       <Image
-        src={imageUrl}
-        alt={name}
+        src={coverImage}
+        alt={hospitalName}
         width={100}
         height={100}
         className="h-full w-full rounded-md object-cover"
       />
       <div className="absolute bottom-0 left-0 h-[50%] w-full rounded-b-md bg-black/40 p-2 text-white">
-        <h1 className="font-semibold">{name}</h1>
-        <p className="text-sm">{address}</p>
+        <h1 className="font-semibold">{hospitalName}</h1>
+        <p className="text-sm">{getAddress(address)}</p>
         {/* others */}
-        <OtherDetails open={open} distance={distance} match={match} />
+        <OtherDetails open={open} distance={distance} match={score} />
       </div>
     </div>
   );

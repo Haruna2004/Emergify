@@ -1,8 +1,10 @@
 "use client";
 import { ImagePlusIcon, Mic, SendHorizonal } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import cn from "classnames";
+import { useSpeechToText } from "@/lib/client/voice-assist/use-speech";
+import { useToast } from "../ui/use-toast";
 
 type SituationProps = {
   situationText: string;
@@ -17,13 +19,43 @@ export default function SituationInput({
   handleSubmit,
   headerStyles,
 }: SituationProps) {
-  const [imageInput, setImageInput] = useState<any>(null);
+  const {
+    speechListening,
+    speechStop,
+    speechSupport,
+    resetTranscript,
+    speechTranscript,
+    speechStart,
+  } = useSpeechToText();
+  const { toast } = useToast();
 
   const handleKeyDown = (e: any) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSubmit();
+      resetTranscript();
     }
+  };
+
+  useEffect(() => {
+    updateSituation(speechTranscript);
+  }, [speechTranscript, updateSituation]);
+
+  const handleSpeechInput = async () => {
+    if (!speechSupport) {
+      toast({
+        title: "You Browser don't support speech input",
+      });
+      return;
+    }
+
+    if (speechListening) {
+      speechStop();
+      return;
+    }
+    await speechStart({ continuous: true });
+
+    // procceed
   };
 
   return (
@@ -49,19 +81,20 @@ export default function SituationInput({
         />
 
         <div className="flex items-center justify-end gap-2 p-2 pb-2 pr-3 text-cyan-800">
-          {!situationText ? (
-            <Mic className="h-10 w-10 scale-75 cursor-pointer opacity-60" />
-          ) : (
+          <Mic
+            className="h-10 w-10 scale-75 cursor-pointer opacity-60"
+            onClick={handleSpeechInput}
+          />
+
+          {situationText && (
             <SendHorizonal
               className="h-12 w-12 scale-75 cursor-pointer rounded-full bg-cyan-800 p-2 text-white transition-all duration-100"
-              onClick={handleSubmit}
+              onClick={() => {
+                handleSubmit();
+                resetTranscript();
+              }}
             />
           )}
-          {/* <Mic className="-mr-1 h-10 w-10 scale-75 cursor-pointer opacity-60" /> */}
-          {/* <SendHorizonal
-            className="h-12 w-12 scale-75 cursor-pointer rounded-full bg-cyan-800 p-2 text-white"
-            onClick={handleSubmit}
-          /> */}
         </div>
       </div>
     </>
