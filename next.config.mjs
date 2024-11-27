@@ -31,10 +31,19 @@ const nextConfig = {
       },
     ];
   },
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.target = "node";
+
+  webpack: (config, { isServer, dev }) => {
+    if (!isServer) {
+      // Replace node-specific modules with browser-compatible ones
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        async_hooks: false,
+        fs: false,
+        net: false,
+        tls: false,
+      };
     }
+
     return config;
   },
 };
