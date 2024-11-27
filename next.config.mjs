@@ -31,6 +31,12 @@ const nextConfig = {
       },
     ];
   },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.target = "node";
+    }
+    return config;
+  },
 };
 
 export default nextConfig;
