@@ -32,17 +32,15 @@ const nextConfig = {
     ];
   },
 
-  webpack: (config, { isServer, dev }) => {
-    if (!isServer) {
-      // Replace node-specific modules with browser-compatible ones
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        async_hooks: false,
-        fs: false,
-        net: false,
-        tls: false,
-      };
-    }
+  webpack: (config, { isServer }) => {
+    // Configure esbuild loader
+    config.module.rules.push({
+      test: /\.js$/,
+      loader: "esbuild-loader",
+      options: {
+        platform: "node", // This tells esbuild to use node built-ins
+      },
+    });
 
     return config;
   },
